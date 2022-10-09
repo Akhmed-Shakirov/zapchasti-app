@@ -66,6 +66,7 @@ const close = () => {
         span {
             color: #FEC80B;
             margin-right: 4px;
+            height: 20px;
         }
         .chevron {
             transition: .2s;
