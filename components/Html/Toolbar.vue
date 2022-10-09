@@ -1,7 +1,7 @@
 <template>
     <div class="toolbar">
         <div class="container">
-            <UiButton class="toolbar__toggle" :animat="isShow" icon="menu" icon-ani="close" value="catalog" @click="() => toggleShow()" />
+            <UiButton class="toolbar__toggle" :animat="isToolbar" icon="menu" icon-ani="close" value="catalog" @click="() => toggleShow()" />
 
             <div class="toolbar__search">
                 <input v-model="search" type="text" :placeholder="$t('toolbarSearct')">
@@ -17,7 +17,8 @@
             </div>
         </div>
 
-        <div ref="toolbarMenu" class="toolbar__menu" :class="{ 'toolbar__menu-active' : isShow }">
+        <div ref="toolbarMenu" class="toolbar__menu" :class="{ 'toolbar__menu-active' : isToolbar }">
+            <!-- Tabs -->
             <div class="toolbar__catalog">
                 <button v-for="catalog in catalogs" :key="catalog.value" :class="{ 'active' : catalog.value === catalogActive }" @click="() => toggleCatalog(catalog.value)">
                     <span class="container">
@@ -25,9 +26,11 @@
                     </span>
                 </button>
             </div>
+
+            <!-- Links -->
             <div class="toolbar__wrapper">
                 <div class="toolbar__links">
-                    <NuxtLink v-for="link in catalogs[catalogActive - 1].child" :key="link" to="/">
+                    <NuxtLink v-for="link in catalogs[catalogActive - 1].child" :key="link" :to="link.value">
                         {{ link.name }}
                     </NuxtLink>
                 </div>
@@ -43,15 +46,18 @@ const links = reactive([
     { name: 'profile', value: '/profile' }
 ])
 
-const isShow = ref(false)
+const { isToolbar } = storeToRefs(useHelper())
+const { toggleToolbar, toggleWrapper } = useHelper()
+
 const toolbarMenu = ref()
 
 const search = ref('')
 
 const toggleShow = () => {
-    isShow.value = !isShow.value
+    toggleToolbar()
+    toggleWrapper()
 
-    if (toolbarMenu.value.style.maxHeight) {
+    if (toolbarMenu.value.style.maxHeight && !isToolbar.value) {
         toolbarMenu.value.style.maxHeight = null
     } else {
         toolbarMenu.value.style.maxHeight = toolbarMenu.value.scrollHeight + 'px'
@@ -71,57 +77,57 @@ const catalogs = reactive([
         name: 'specialEquipment',
         value: 1,
         child: [
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' }
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
         ]
     },
     {
         name: 'cars',
         value: 2,
         child: [
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' }
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
         ]
     },
     {
         name: 'freight',
         value: 3,
         child: [
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' }
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
         ]
     },
     {
         name: 'buses',
         value: 4,
         child: [
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' },
-            { name: 'test', value: '/test' }
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
         ]
     }
 ])
@@ -296,6 +302,14 @@ const catalogs = reactive([
             font-size: 14px;
             line-height: 17px;
             color: #000000;
+
+            &:hover {
+                color: #FEC80B;
+            }
+        }
+
+        .router-link-exact-active {
+            // color: #FEC80B;
 
             &:hover {
                 color: #FEC80B;

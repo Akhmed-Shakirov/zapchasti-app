@@ -6,8 +6,14 @@
             <slot />
         </div>
         <HtmlFooter />
+        <div class="bg-wrapper" :class="{ 'bg-wrapper__active' : isWrapper }" @click="() => resetHelper()" />
     </div>
 </template>
+
+<script setup>
+const { isWrapper } = storeToRefs(useHelper())
+const { resetHelper } = useHelper()
+</script>
 
 <style scoped lang="scss">
 .l-default {

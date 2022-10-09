@@ -2,6 +2,30 @@ body {
     background: #F9F9F9;
 }
 
+.block-scroll {
+    position: fixed;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: .2s;
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: -1;
+    opacity: 0;
+}
+
+.bg-wrapper__active {
+    z-index: 10 !important;
+    opacity: 1 !important;
+}
+
 .list-enter-active,
 .list-leave-active {
     transition: all 0.5s ease;

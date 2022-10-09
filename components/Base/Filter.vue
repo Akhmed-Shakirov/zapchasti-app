@@ -48,7 +48,7 @@ const setValue = (id) => {
     if (!props.modelValue.includes(id)) {
         emit('update:modelValue', [...props.modelValue, id])
     } else {
-        // 
+        emit('update:modelValue', props.modelValue.filter(el => el !== id))
     }
 }
 

@@ -2,7 +2,9 @@
     <div class="card">
         <img src="/images/card.png" alt="card">
         <div class="card__info">
-            <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
+            <NuxtLink to="products/1">
+                <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
+            </NuxtLink>
             <p v-if="true">
                 {{ $t('from') }} 1 352 000
             </p>
@@ -20,7 +22,7 @@
                     <UiButton value="+" />
                 </div>
             </div>
-            <NuxtLink to="">
+            <NuxtLink to="products/1" class="card__link">
                 {{ $t('getCP') }}
                 <BaseIcon icon="download" />
             </NuxtLink>
@@ -133,6 +135,11 @@ const props = defineProps({
             line-height: 22px;
             color: #000000;
             margin-bottom: 24px;
+            transition: .2s;
+
+            &:hover {
+                color: #b39927;
+            }
         }
 
         p {
@@ -148,22 +155,23 @@ const props = defineProps({
             margin-bottom: 8px;
         }
 
-        a {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 20px;
-            color: #848484;
-            border: 2px solid transparent;
-            padding: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            grid-gap: 10px;
-            border-radius: 8px;
+    }
 
-            &:hover {
-                border: 2px solid #848484bd;
-            }
+    &__link {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #848484;
+        border: 2px solid transparent;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-gap: 10px;
+        border-radius: 8px;
+
+        &:hover {
+            border: 2px solid #848484bd;
         }
     }
 
