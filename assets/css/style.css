@@ -1,5 +1,7 @@
 body {
     background: #F9F9F9;
+    width: 100%;
+    overflow-y: scroll;
 }
 
 .block-scroll {
