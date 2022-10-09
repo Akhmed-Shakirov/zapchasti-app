@@ -1,15 +1,15 @@
 <template>
     <div class="gallery">
         <div class="gallery__bar">
-            <img src="@/assets/images/card.png" class="active" alt="card">
-            <img src="@/assets/images/card.png" alt="card">
-            <img src="@/assets/images/card.png" alt="card">
-            <img src="@/assets/images/card.png" alt="card">
-            <img src="@/assets/images/card.png" alt="card">
+            <img src="/images/card.png" class="active" alt="card">
+            <img src="/images/card.png" alt="card">
+            <img src="/images/card.png" alt="card">
+            <img src="/images/card.png" alt="card">
+            <img src="/images/card.png" alt="card">
 
             <BaseIcon icon="chevron" />
         </div>
-        <img src="@/assets/images/card.png" class="gallery__main" alt="card">
+        <img src="/images/card.png" class="gallery__main" alt="card">
     </div>
 </template>
 

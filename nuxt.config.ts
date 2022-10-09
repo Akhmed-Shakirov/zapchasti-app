@@ -26,19 +26,10 @@ export default defineNuxtConfig({
                     resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
                 ]
             })
-        ],
-        css: {
-            preprocessorOptions: {
-                sass: {
-                    additionalData: '@import "@/assets/style/variable.scss"'
-                }
-            }
-        }
+        ]
     },
     css: [
-        '@/assets/scss/container.scss',
-        '@/assets/scss/fonts.scss',
-        '@/assets/scss/normalize.scss',
-        '@/assets/scss/style.scss'
+        'assets/css/normalize.css',
+        'assets/css/style.css'
     ]
 })

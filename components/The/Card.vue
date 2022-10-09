@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img src="@/assets/images/card.png" alt="card">
+        <img src="/images/card.png" alt="card">
         <div class="card__info">
             <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
             <p v-if="true">

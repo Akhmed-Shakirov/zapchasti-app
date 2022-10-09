@@ -5,6 +5,6 @@
 <script setup>
 useHead({
     title: 'Frontend',
-    link: [{ rel: 'icon', type: 'image/png', href: '/assets/emblem.svg' }]
+    link: [{ rel: 'icon', type: 'image/png', href: '/emblem.svg' }]
 })
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="checkbox" :class="{ 'checkbox-active' : isActive }">
-        <img v-if="isActive" src="@/assets/icons/check.svg">
+        <img v-if="isActive" src="/icons/check.svg">
     </div>
 </template>
 
