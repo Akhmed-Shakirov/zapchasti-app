@@ -28,11 +28,13 @@
             </div>
 
             <!-- Links -->
-            <div class="toolbar__wrapper">
-                <div class="toolbar__links">
-                    <NuxtLink v-for="link in catalogs[catalogActive - 1].child" :key="link" :to="link.value">
-                        {{ link.name }}
-                    </NuxtLink>
+            <div class="container">
+                <div class="toolbar__wrapper">
+                    <div class="toolbar__links">
+                        <NuxtLink v-for="link in catalogs[catalogActive - 1].child" :key="link" :to="link.value">
+                            {{ link.name }}
+                        </NuxtLink>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,7 +236,7 @@ const catalogs = reactive([
     }
 
     &__menu {
-        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+        border-top: 1px solid #E4E7EC;
         position: absolute;
         z-index: 1;
         left: 0;
@@ -270,10 +272,18 @@ const catalogs = reactive([
             width: 100%;
             display: block;
             padding: 24px 0;
+
+            &:hover {
+                color: #FEC80B;
+            }
         }
 
         .active {
             background: #FFFFFF;
+
+            &:hover {
+                color: #101828;
+            }
         }
     }
 
@@ -281,9 +291,9 @@ const catalogs = reactive([
         padding: 16px 24px;
         position: absolute;
         top: 0;
-        right: 0;
+        transform: translateX(320px);
         background: #FFFFFF;
-        width: 70%;
+        width: 100%;
         height: 100%;
         border-left: 1px solid #E4E7EC;
     }
