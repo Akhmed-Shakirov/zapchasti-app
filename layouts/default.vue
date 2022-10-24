@@ -2,6 +2,7 @@
     <div class="l-default">
         <HtmlHeader ref="headRef" />
         <HtmlToolbar />
+        <HtmlMenu />
         <div class="l-wrapper">
             <slot />
         </div>

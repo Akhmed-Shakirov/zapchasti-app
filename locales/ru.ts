@@ -93,5 +93,11 @@ export default {
     reviews: 'Отзывы',
     salesman: 'Продавец',
 
+    sparePartsForSpecialEquipment: 'Запчасти на спецтехнику',
+    sparePartsForBuses: 'Запчасти на автобусы',
+    sparePartsForTrucks: 'Запачсти на грузовую технику',
+    sparePartsForElectricCars: 'Запчасти на электрокары',
+    saleOfElectricCars: 'Продажа электрокаров',
+
     key6: 'value'
 }
