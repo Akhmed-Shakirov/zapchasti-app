@@ -50,7 +50,7 @@ const links = reactive([
     }
 
     .router-link-exact-active {
-        // color: #1570EF;
+        color: #1570EF;
 
         &:hover {
             color: #1570EF;

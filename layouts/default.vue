@@ -12,6 +12,16 @@
 </template>
 
 <script setup>
+const route = useRoute()
+
+onMounted(() => {
+    if (route.path === '/') {
+        document.body.setAttribute('style', 'background: #FFFFFF;')
+    } else {
+        document.body.setAttribute('style', 'background: #F9F9F9;')
+    }
+})
+
 const { isWrapper } = storeToRefs(useHelper())
 const { resetHelper } = useHelper()
 </script>

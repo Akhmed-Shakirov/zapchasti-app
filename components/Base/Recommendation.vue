@@ -4,7 +4,7 @@
             <h2>{{ $t(title) }}</h2>
             <div class="recommendation__main">
                 <div class="recommendation__catalog" :class="`recommendation__catalog-${color}`">
-                    <img :src="`/images/${catalog.img}`" alt="catalog">
+                    <img :src="`/images/${catalog.img}`" :alt="catalog.img">
                     <h3>{{ $t(catalog.name) }}</h3>
                     <p v-if="catalog.text">
                         {{ $t(catalog.text) }}

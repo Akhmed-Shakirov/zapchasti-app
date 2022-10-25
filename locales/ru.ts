@@ -107,6 +107,7 @@ export default {
     spareParts: 'Запчасти',
 
     fromChinaOriginalDuplicates: 'из Китая оригинал и дубликаты',
+    allTypesOfSparePartsForSpecialEquipment: 'Все виды запчастей для спецтехники',
 
     key6: 'value'
 }

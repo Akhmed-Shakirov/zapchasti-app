@@ -2,16 +2,14 @@
     <NuxtLayout>
         <div class="h-banner">
             <div class="container">
-                <UiCarousel>
-                    <div class="h-banner__slider h-banner__slider-orange">
-                        1
+                <UiCarousel dots :timer="4">
+                    <div v-for="item in banner" :key="item" class="h-banner__slider" :class="item.color">
+                        <div class="h-banner__info">
+                            <h2>{{ $t(item.name) }}</h2>
+                            <p>{{ $t(item.text) }}</p>
+                        </div>
+                        <img :src="`/images/${item.img}`" :alt="item.img">
                     </div>
-                    <!-- <div class="h-banner__slider h-banner__slider-blue">
-                        2
-                    </div>
-                    <div class="h-banner__slider h-banner__slider-green">
-                        3
-                    </div> -->
                 </UiCarousel>
             </div>
         </div>
@@ -63,6 +61,27 @@ const recommendations = reactive([
         items: []
     }
 ])
+
+const banner = reactive([
+    {
+        img: 'card.png',
+        name: 'allTypesOfSparePartsForSpecialEquipment',
+        text: 'fromChinaOriginalDuplicates',
+        color: 'orange'
+    },
+    {
+        img: 'card2.png',
+        name: 'allTypesOfSparePartsForSpecialEquipment',
+        text: 'fromChinaOriginalDuplicates',
+        color: 'blue'
+    },
+    {
+        img: 'card3.png',
+        name: 'allTypesOfSparePartsForSpecialEquipment',
+        text: 'fromChinaOriginalDuplicates',
+        color: 'green'
+    }
+])
 </script>
 
 <style lang="scss">
@@ -70,19 +89,45 @@ const recommendations = reactive([
     margin: 24px 0 64px;
 
     &__slider {
-        height: 500px;
+        min-width: 100%;
+        min-height: 500px;
+        padding: 35px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-        &-blue {
-            background: #8FD8FD;
+    &__info {
+        max-width: 364px;
+
+        h2 {
+            margin-bottom: 16px;
         }
 
-        &-orange {
-            background: #FFD677;
+        p {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #344054;
         }
+    }
 
-        &-green {
-            background: #15CF74;
-        }
+    img {
+        max-width: 50%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .blue {
+        background: #8FD8FD;
+    }
+
+    .orange {
+        background: #FFD677;
+    }
+
+    .green {
+        background: #15CF74;
     }
 }
 </style>
