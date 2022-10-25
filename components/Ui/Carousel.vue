@@ -1,10 +1,9 @@
 <template>
-    <div ref="carousel" class="carousel">
+    <div ref="carousel" class="carousel" :style="{ '--gap': gap + 'px'}">
         <div ref="track" class="carousel__track">
             <slot />
         </div>
         <div class="carousel__arrows">
-            <slot name="arrow" />
             <button v-show="arrow && prev === 'carousel__arrows-prev'" class="carousel__arrows-prev">
                 prev
             </button>
@@ -49,6 +48,10 @@ const props = defineProps({
         type: Number,
         default: 1
     },
+    gap: {
+        type: Number,
+        default: 0
+    },
     timer: {
         type: Number,
         default: 7
@@ -67,11 +70,12 @@ onMounted(() => {
     setTimeout(() => {
         items.value = track.value.children
         itemsCount.value = items.value.length
-        itemWidth.value = carousel.value.clientWidth / props.show
-        movePosition.value = props.scroll * itemWidth.value
+        console.log(((props.show - 1) * props.gap))
+        itemWidth.value = (carousel.value.clientWidth - ((props.show - 1) * props.gap)) / props.show
+        movePosition.value = props.scroll * itemWidth.value + ((props.show - props.scroll) * props.gap)
 
         for (const el of items.value) {
-            el && el.setAttribute('style', `min-width: ${itemWidth.value}px`)
+            el && el.setAttribute('style', `min-width: ${itemWidth.value}px;`)
         }
 
         const btnPrev = document.querySelector(`.${props.prev}`)
@@ -82,13 +86,13 @@ onMounted(() => {
                 const itemsLeft = Math.abs(position.value) / itemWidth.value
                 position.value += itemsLeft >= props.scroll ? movePosition.value : itemsLeft * itemWidth.value
             } else {
-                position.value = -(itemsCount.value - 1) * itemWidth.value
+                position.value = -(itemsCount.value - (Math.abs(position.value) + props.show * (itemWidth.value - ((props.show - props.scroll) * props.gap))) / itemWidth.value) * itemWidth.value
             }
         }
 
         btnNext.onclick = () => {
-            if (position.value !== -(itemsCount.value - 1) * itemWidth.value) {
-                const itemsLeft = itemsCount.value - (Math.abs(position.value) + props.show * itemWidth.value) / itemWidth.value
+            if (itemsCount.value - (Math.abs(position.value) + props.show * (itemWidth.value - ((props.show - props.scroll) * props.gap))) / itemWidth.value) {
+                const itemsLeft = itemsCount.value - (Math.abs(position.value) + props.show * (itemWidth.value - ((props.show - props.scroll) * props.gap))) / itemWidth.value
                 position.value -= itemsLeft >= props.scroll ? movePosition.value : itemsLeft * itemWidth.value
             } else {
                 position.value = 0
@@ -141,6 +145,7 @@ const setNewPosition = (index) => {
     &__track {
         display: flex;
         transition: .2s;
+        grid-gap: var(--gap);
     }
 
     &__arrows {

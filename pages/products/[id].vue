@@ -129,6 +129,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="product__slider">
+                    <div class="product__slider-info">
+                        <div class="product__slider-content">
+                            <h3>Подходящие запчасти</h3>
+                            <p>Посмотреть все</p>
+                        </div>
+                        <div class="product__slider-content">
+                            <BaseIcon class="product__slider-prev" icon="arrow" />
+                            <BaseIcon class="product__slider-next" icon="arrow" />
+                        </div>
+                    </div>
+
+                    <UiCarousel arrow :show="4" :scroll="2" :gap="24" :timer="4" prev="product__slider-prev" next="product__slider-next">
+                        <TheCard stock :is-stock="false" />
+                        <TheCard />
+                        <TheCard stock :is-stock="true" />
+                        <TheCard stock :is-stock="false" />
+                        <TheCard />
+                        <TheCard stock :is-stock="true" />
+                        <TheCard stock :is-stock="false" />
+                        <TheCard />
+                        <TheCard stock :is-stock="true" />
+                    </UiCarousel>
+                </div>
             </div>
         </div>
     </NuxtLayout>
@@ -150,6 +175,59 @@ const toggleTab = (key) => {
 <style lang="scss">
 .product {
     padding-bottom: 50px;
+
+    &__slider {
+        margin-top: 115px;
+
+        &-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        &-content {
+            display: flex;
+            align-items: center;
+
+            h3 {
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 32px;
+                color: #000000;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #FDB022;
+            }
+
+            &:first-child {
+                grid-gap: 16px;
+            }
+
+            &:last-child {
+                grid-gap: 20px;
+            }
+
+            .icon {
+                color: #667085;
+                transition: .2s;
+                cursor: pointer;
+
+                &:hover {
+                    color: #000000;
+                }
+            }
+        }
+
+        &-next {
+            transform: rotate(180deg);
+        }
+
+    }
 
     &__info {
         display: flex;

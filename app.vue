@@ -4,8 +4,8 @@
 
 <script setup>
 useHead({
-    title: 'Frontend',
-    link: [{ rel: 'icon', type: 'image/png', href: '/emblem.svg' }]
+    title: 'Zapchasti',
+    link: [{ rel: 'icon', type: 'image/png', href: '/icons/logo.svg' }]
 })
 
 const { isToolbar } = storeToRefs(useHelper())
