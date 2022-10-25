@@ -59,6 +59,7 @@ const props = defineProps({
     position: relative;
 
     img {
+        padding: 32px;
         width: 100%;
         height: 241px;
         object-fit: contain;

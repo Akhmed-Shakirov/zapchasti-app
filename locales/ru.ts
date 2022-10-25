@@ -16,6 +16,7 @@ export default {
 
     showProducts: 'Показать товары',
     showMore: 'Показать еще',
+    viewAll: 'Посмотреть все',
 
     logoText: 'Продажа запчастей',
     logoText2: 'для всех видов транспорта',
@@ -98,6 +99,14 @@ export default {
     sparePartsForTrucks: 'Запачсти на грузовую технику',
     sparePartsForElectricCars: 'Запчасти на электрокары',
     saleOfElectricCars: 'Продажа электрокаров',
+
+    saleOfElectricCarsSpareParts: 'Продажа электрокаров и запчастей',
+    sparePartsForElectricBuses: 'Запчасти на электроавтобусы',
+
+    largeSelectionOfElectricCars: 'Большой выбор Электрокаров',
+    spareParts: 'Запчасти',
+
+    fromChinaOriginalDuplicates: 'из Китая оригинал и дубликаты',
 
     key6: 'value'
 }

@@ -29,7 +29,7 @@ export default defineNuxtConfig({
         ]
     },
     css: [
-        'assets/css/normalize.css',
-        'assets/css/style.css'
+        'assets/css/normalize.scss',
+        'assets/css/style.scss'
     ]
 })
