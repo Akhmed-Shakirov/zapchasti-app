@@ -70,7 +70,6 @@ onMounted(() => {
     setTimeout(() => {
         items.value = track.value.children
         itemsCount.value = items.value.length
-        console.log(((props.show - 1) * props.gap))
         itemWidth.value = (carousel.value.clientWidth - ((props.show - 1) * props.gap)) / props.show
         movePosition.value = props.scroll * itemWidth.value + ((props.show - props.scroll) * props.gap)
 
