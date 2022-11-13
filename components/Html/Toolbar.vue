@@ -20,7 +20,7 @@
         <div ref="toolbarMenu" class="toolbar__menu" :class="{ 'toolbar__menu-active' : isToolbar }">
             <!-- Tabs -->
             <div class="toolbar__catalog">
-                <button v-for="catalog in catalogs" :key="catalog.value" :class="{ 'active' : catalog.value === catalogActive }" @click="() => toggleCatalog(catalog.value)">
+                <button v-for="catalog in catalogs" :key="catalog.value" :class="{ 'active' : catalog.value === catalogActive }" @click="() => setCatalog(catalog.value)">
                     <span class="container">
                         {{ $t(catalog.name) }}
                     </span>
@@ -48,8 +48,8 @@ const links = reactive([
     { name: 'profile', value: '/profile' }
 ])
 
-const { isToolbar } = storeToRefs(useHelper())
-const { toggleToolbar, toggleWrapper } = useHelper()
+const { isToolbar, catalogActive } = storeToRefs(useHelper())
+const { toggleToolbar, toggleWrapper, setCatalog } = useHelper()
 
 const toolbarMenu = ref()
 
@@ -58,21 +58,15 @@ const search = ref('')
 const toggleShow = () => {
     toggleToolbar()
     toggleWrapper()
+}
 
-    if (toolbarMenu.value.style.maxHeight && !isToolbar.value) {
+watch(() => isToolbar.value, () => {
+    if (!isToolbar.value) {
         toolbarMenu.value.style.maxHeight = null
     } else {
         toolbarMenu.value.style.maxHeight = toolbarMenu.value.scrollHeight + 'px'
     }
-}
-
-const catalogActive = ref(1)
-
-const toggleCatalog = (value) => {
-    if (catalogActive.value !== value) {
-        catalogActive.value = value
-    }
-}
+})
 
 const catalogs = reactive([
     {
@@ -97,7 +91,7 @@ const catalogs = reactive([
         ]
     },
     {
-        name: 'cars',
+        name: 'trucks',
         value: 2,
         child: [
             { name: 'Products', value: '/products' },
@@ -110,7 +104,7 @@ const catalogs = reactive([
         ]
     },
     {
-        name: 'freight',
+        name: 'agriculturalMachinery',
         value: 3,
         child: [
             { name: 'Products', value: '/products' },
@@ -124,6 +118,50 @@ const catalogs = reactive([
     {
         name: 'buses',
         value: 4,
+        child: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ]
+    },
+    {
+        name: 'electricCars',
+        value: 5,
+        child: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ]
+    },
+    {
+        name: 'electricalGoods',
+        value: 6,
+        child: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ]
+    },
+    {
+        name: 'spareParts',
+        value: 7,
+        child: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ]
+    },
+    {
+        name: 'allCategories',
+        value: 8,
         child: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
@@ -261,7 +299,7 @@ const catalogs = reactive([
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        height: 526px;
+        height: 580px;
         padding: 12px 0;
 
         button {

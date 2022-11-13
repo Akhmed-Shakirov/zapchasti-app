@@ -4,6 +4,7 @@ export const useHelper = defineStore('Helper', {
     state: () => {
         return {
             isToolbar: false,
+            catalogActive: 1,
             isWrapper: false
         }
     },
@@ -14,9 +15,15 @@ export const useHelper = defineStore('Helper', {
         toggleWrapper () {
             this.isWrapper = !this.isWrapper
         },
+        setCatalog (idx) {
+            if (this.catalogActive !== idx) {
+                this.catalogActive = idx
+            }
+        },
 
         resetHelper () {
             this.isToolbar = false
+            this.catalogActive = 1
             this.isWrapper = false
         }
     }

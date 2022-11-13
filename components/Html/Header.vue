@@ -20,9 +20,11 @@
             </ul>
 
             <div class="header__helper">
-                <UiSelect v-model="select.city" icon="geo" />
-                <UiSelect v-model="select.currency" />
-                <UiSelect v-model="select.lang" />
+                <BaseIcon icon="call" />
+                <div class="header__block">
+                    <a href="tel:+77017707089">+7(701) 770-70-89</a>
+                    <p>с 9:00-18:00</p>
+                </div>
             </div>
         </div>
     </header>
@@ -52,12 +54,6 @@ const links = reactive([
     { name: 'clients', value: '/clients' },
     { name: 'leasing', value: '/leasing' }
 ])
-
-const select = reactive({
-    city: 'almaty',
-    currency: 'kzt',
-    lang: 'ru'
-})
 </script>
 
 <style scoped lang="scss">
@@ -147,8 +143,33 @@ const select = reactive({
 
     &__helper {
         display: flex;
-        align-content: center;
+        align-items: center;
         grid-gap: 16px;
+
+        .call {
+            background: #FEC80B;
+        }
+    }
+
+    &__block {
+        a {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #000000;
+            margin-bottom: 4px;
+
+            &:hover {
+                color: #FEC80B;
+            }
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            color: #667085;
+        }
     }
 }
 

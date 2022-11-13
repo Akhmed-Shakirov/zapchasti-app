@@ -14,9 +14,7 @@
                     </NuxtLink>
                 </div>
                 <BaseGrid>
-                    <TheCard stock :is-stock="false" />
-                    <TheCard />
-                    <TheCard stock :is-stock="true" />
+                    <TheCard v-for="item in items" :key="item" />
                 </BaseGrid>
             </div>
         </div>
@@ -42,7 +40,9 @@ const props = defineProps({
     items: {
         type: Array,
         default () {
-            return []
+            return [
+                1, 1, 1
+            ]
         }
     }
 })

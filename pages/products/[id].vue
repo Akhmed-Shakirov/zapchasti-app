@@ -1,6 +1,6 @@
 <template>
     <NuxtLayout>
-        <HtmlTitle code />
+        <HtmlTitle code title="palfinger" :links="[ { name: 'categories', value: 'categories' } ]" />
         <div class="product">
             <div class="container">
                 <div class="product__info">

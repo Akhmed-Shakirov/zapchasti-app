@@ -15,11 +15,11 @@
                     <template v-if="endMenu">
                         /
                         <p>
-                            {{ $t('categoriesName') }}
+                            {{ $t(endMenu) }}
                         </p>
                     </template>
                 </div>
-                <h1>
+                <h1 v-if="title">
                     {{ $t(title) }} <span v-if="producting">15 682 {{ $t('producting') }}</span>
                 </h1>
                 <h4>
@@ -52,7 +52,7 @@ const props = defineProps({
     },
     title: {
         type: String,
-        default: 'palfinger'
+        default: ''
     },
     producting: {
         type: Number,
@@ -65,9 +65,7 @@ const props = defineProps({
     links: {
         type: Array,
         default () {
-            return [
-                { name: 'categories', value: 'categories' }
-            ]
+            return []
         }
     }
 })

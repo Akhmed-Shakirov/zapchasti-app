@@ -48,8 +48,8 @@ const close = () => {
     position: relative;
 
     &__head {
-        background: #F9FAFB;
-        border: 1px solid #E4E7EC;
+        // background: #F9FAFB;
+        // border: 1px solid #E4E7EC;
         border-radius: 8px;
         padding: 6px 16px;
         user-select: none;
@@ -62,6 +62,7 @@ const close = () => {
         font-size: 14px;
         line-height: 20px;
         color: #101828;
+        transition: .2s;
 
         span {
             color: #FEC80B;
@@ -73,7 +74,8 @@ const close = () => {
         }
 
         &:hover {
-            box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
+            // box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
+            opacity: .6;
         }
 
         &-active {

@@ -65,9 +65,15 @@ export default {
     forQuestions: 'По всем вопросам',
 
     specialEquipment: 'Спецтехника',
+    electricCars: 'Электрокары',
     cars: 'Легковые',
     freight: 'Грузовые',
     buses: 'Автобусы',
+
+    trucks: 'Грузовая техника',
+    agriculturalMachinery: 'Сельхозтехника',
+    electricalGoods: 'Электротовары',
+    allCategories: 'Все категории',
 
     manufacturerBrand: 'Марка производителя',
     equipmentType: 'Тип техники',
@@ -108,6 +114,41 @@ export default {
 
     fromChinaOriginalDuplicates: 'из Китая оригинал и дубликаты',
     allTypesOfSparePartsForSpecialEquipment: 'Все виды запчастей для спецтехники',
+
+    new: 'Новинки',
+    stock: 'Акции',
+    sale: 'Распродажа',
+    bulkOrders: 'Оптовые заказы',
+    benefit: 'Выгода',
+
+    allModels: 'Все модели',
+    allTypes: 'Все типы',
+
+    sedan: 'Седан',
+    crossover: 'Кроссовер',
+    SUV: 'Внедорожник',
+    hatchback: 'Хэтчбек',
+    coupe: 'Купе',
+    minivan: 'Минивен',
+    pickup: 'Пикап',
+    cabriolet: 'Кабриолет',
+    stationWagon: 'Универсал',
+
+    dumpTrucksAndTractors: 'Самосвалы и тягачи',
+    concreteMixerTrucks: 'Автобетоносмесители',
+    bulldozers: 'Бульдозеры',
+    forklifts: 'Вилочные погрузчики',
+    loaders: 'Погрузчики',
+    excavators: 'Экскаваторы',
+    asphaltPavers: 'Асфальтоукладчики',
+    concretePumps: 'Бетононасосы',
+    graders: 'Грейдеры',
+
+    cartIsEmpty: 'Корзина пуста',
+    basketText1: 'Воспользуйтесь поиском, чтобы найти всё что нужно.',
+    basketText2: 'Если в корзине были товары',
+    basketText3: 'чтобы посмотреть список.',
+    basketText4: 'войдите',
 
     key6: 'value'
 }

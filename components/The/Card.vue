@@ -1,31 +1,37 @@
 <template>
-    <div class="card">
+    <div class="card" :class="{ 'card__active' : isHover }">
+        <NuxtLink
+            to="products/1"
+            class="card__link"
+            @mouseover="isHover = true"
+            @mouseleave="isHover = false"
+        />
         <img src="/images/card.png" alt="card">
         <div class="card__info">
-            <NuxtLink to="products/1">
-                <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
-            </NuxtLink>
+            <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
             <p v-if="true">
                 {{ $t('from') }} 1 352 000
             </p>
             <p v-else>
                 {{ $t('priceRequest') }}
             </p>
-            <UiButton v-if="!basket" class="add" value="addBasket" />
-            <div v-else class="card__basket">
-                <UiButton class="basket" value="basket" icon-r="basket" />
-                <sup>1</sup>
+            <div class="card__action">
+                <UiButton v-if="!basket" class="add" value="addBasket" />
+                <div v-else class="card__basket">
+                    <UiButton class="basket" value="basket" icon-r="basket" />
+                    <sup>1</sup>
 
-                <div class="card__total">
-                    <UiButton value="-" />
-                    <span>1</span>
-                    <UiButton value="+" />
+                    <div class="card__total">
+                        <UiButton value="-" />
+                        <span>1</span>
+                        <UiButton value="+" />
+                    </div>
                 </div>
             </div>
-            <NuxtLink to="products/1" class="card__link">
+            <div class="card__download">
                 {{ $t('getCP') }}
                 <BaseIcon icon="download" />
-            </NuxtLink>
+            </div>
         </div>
         <div v-if="stock" class="card__stock" :class="{ 'card__stock-grin' : isStock, 'card__stock-red' : !isStock }">
             {{ isStock ? $t('inStock') : $t('notAvailable') }}
@@ -49,6 +55,8 @@ const props = defineProps({
         deflaut: true
     }
 })
+
+const isHover = ref(false)
 </script>
 
 <style scoped lang="scss">
@@ -59,11 +67,14 @@ const props = defineProps({
     position: relative;
 
     img {
+        position: relative;
+        z-index: 0;
         padding: 32px;
         width: 100%;
         height: 241px;
         object-fit: contain;
         background: #2F2F2F;
+        transition: .2s;
     }
 
     &__basket {
@@ -137,10 +148,6 @@ const props = defineProps({
             color: #000000;
             margin-bottom: 24px;
             transition: .2s;
-
-            &:hover {
-                color: #b39927;
-            }
         }
 
         p {
@@ -158,7 +165,7 @@ const props = defineProps({
 
     }
 
-    &__link {
+    &__download {
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
@@ -170,10 +177,7 @@ const props = defineProps({
         justify-content: center;
         grid-gap: 10px;
         border-radius: 8px;
-
-        &:hover {
-            border: 2px solid #848484bd;
-        }
+        transition: .2s;
     }
 
     &__stock {
@@ -198,10 +202,24 @@ const props = defineProps({
             background: #F04438;
         }
     }
+
+    &__link {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    &__action {
+        position: relative;
+        z-index: 2;
+    }
     .like {
         color: #FFDA33;
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         top: 18px;
         right: 18px;
         cursor: pointer;
@@ -209,6 +227,20 @@ const props = defineProps({
 
         &:hover {
             opacity: .5;
+        }
+    }
+
+    &__active {
+        img {
+            opacity: .7;
+        }
+
+        .card__download {
+            border: 2px solid #848484bd;
+        }
+
+        .card__info h3 {
+            color: #b39927;
         }
     }
 }

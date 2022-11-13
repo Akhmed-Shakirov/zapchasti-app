@@ -62,6 +62,15 @@ const links = reactive([
             { name: 'serviceCentres', value: '/serviceCentres' },
             { name: 'legalEntities', value: '/legalEntities' }
         ]
+    },
+    {
+        name: 'benefit',
+        value: 'benefit',
+        child: [
+            { name: 'stock', value: '/stock' },
+            { name: 'new', value: '/new' },
+            { name: 'sale', value: '/sale' }
+        ]
     }
 ])
 
@@ -81,6 +90,7 @@ const tels = reactive([
         padding-bottom: 24px;
         display: flex;
         align-items: flex-start;
+        justify-content: space-between;
         grid-gap: 60px;
     }
 

@@ -27,6 +27,11 @@ i.icon {
 //     mask: url('/icons/test.svg') no-repeat center / contain;
 // }
 
+.call {
+    @extend i, .icon;
+    mask: url('/icons/call.svg') no-repeat center / contain;
+}
+
 .copy {
     @extend i, .icon;
     mask: url('/icons/copy.svg') no-repeat center / contain;
