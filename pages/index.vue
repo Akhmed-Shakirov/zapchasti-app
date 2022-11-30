@@ -1,9 +1,15 @@
 <template>
     <NuxtLayout>
-        <div class="h-banner">
+        <div class="h-banner" @mouseleave="() => toggleMenu(0)">
             <div class="container">
                 <ul class="h-banner__menu">
-                    <li v-for="item in catalogs" :key="item" :class="{ 'li-active' : item.value === valueMenu }" @click="() => toggleMenu(item.value)">
+                    <li
+                        v-for="item in catalogs"
+                        :key="item"
+                        :class="{ 'li-active' : item.value === valueMenu }"
+                        @click="() => toggleMenu(item.value)"
+                    >
+                        <div @mouseover="() => toggleMenu(item.value)" />
                         <span />
                         <p>{{ $t(item.name) }}</p>
                         <BaseIcon icon="chevron" />
@@ -607,6 +613,16 @@ const banner = reactive([
             grid-gap: 8px;
             cursor: pointer;
             user-select: none;
+            position: relative;
+
+            div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+            }
 
             span {
                 display: inline-block;
