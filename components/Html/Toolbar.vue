@@ -31,8 +31,21 @@
             <div class="container">
                 <div class="toolbar__wrapper">
                     <div class="toolbar__links">
-                        <NuxtLink v-for="link in catalogs[catalogActive - 1].child" :key="link" :to="link.value">
+                        <h3>{{ $t('transport') }}</h3>
+                        <NuxtLink v-for="link in catalogs[catalogActive - 1].transport" :key="link" :to="link.value">
                             {{ link.name }}
+                        </NuxtLink>
+                    </div>
+                    <div class="toolbar__links">
+                        <h3>{{ $t('spareParts') }}</h3>
+                        <NuxtLink v-for="link in catalogs[catalogActive - 1].spareParts" :key="link" :to="link.value">
+                            {{ link.name }}
+                        </NuxtLink>
+                    </div>
+                    <div class="toolbar__links">
+                        <h3>{{ $t('brands') }}</h3>
+                        <NuxtLink v-for="link in catalogs[catalogActive - 1].brands" :key="link" :to="link.value">
+                            <img :src="link.name" :alt="link.name">
                         </NuxtLink>
                     </div>
                 </div>
@@ -72,15 +85,7 @@ const catalogs = reactive([
     {
         name: 'specialEquipment',
         value: 1,
-        child: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
+        transport: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
@@ -88,86 +93,211 @@ const catalogs = reactive([
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'trucks',
         value: 2,
-        child: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
+        transport: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'agriculturalMachinery',
         value: 3,
-        child: [
+        transport: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'buses',
         value: 4,
-        child: [
+        transport: [
+            { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'electricCars',
         value: 5,
-        child: [
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'electricalGoods',
         value: 6,
-        child: [
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'spareParts',
         value: 7,
-        child: [
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     },
     {
         name: 'allCategories',
         value: 8,
-        child: [
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' },
             { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
         ]
     }
 ])
@@ -334,15 +464,26 @@ const catalogs = reactive([
         width: 100%;
         height: 100%;
         border-left: 1px solid #E4E7EC;
+
+        display: flex;
+        align-content: flex-start;
+        grid-gap: 32px;
     }
 
     &__links {
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
         align-content: flex-start;
-        grid-gap: 16px 48px;
-        max-height: 360px;
+        grid-gap: 8px;
+
+        h3 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            position: relative;
+            left: -1px;
+        }
 
         a {
             width: 200px;
@@ -353,6 +494,16 @@ const catalogs = reactive([
 
             &:hover {
                 color: #FEC80B;
+            }
+        }
+
+        img {
+            width: 151px;
+            object-fit: contain;
+            transition: .2s;
+
+            &:hover {
+                opacity: .5;
             }
         }
 

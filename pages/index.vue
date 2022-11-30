@@ -3,12 +3,34 @@
         <div class="h-banner">
             <div class="container">
                 <ul class="h-banner__menu">
-                    <li v-for="item in catalog" :key="item" @click="() => toggleMenu(item.value)">
+                    <li v-for="item in catalogs" :key="item" :class="{ 'li-active' : item.value === valueMenu }" @click="() => toggleMenu(item.value)">
                         <span />
                         <p>{{ $t(item.name) }}</p>
                         <BaseIcon icon="chevron" />
                     </li>
                 </ul>
+                <div v-for="item in catalogs" :key="item" class="h-banner__wrapper">
+                    <div v-if="item.value === valueMenu" class="h-banner__catalogs">
+                        <div class="h-banner__links">
+                            <h3>{{ $t('transport') }}</h3>
+                            <NuxtLink v-for="link in item.transport" :key="link" :to="link.value">
+                                {{ link.name }}
+                            </NuxtLink>
+                        </div>
+                        <div class="h-banner__links">
+                            <h3>{{ $t('spareParts') }}</h3>
+                            <NuxtLink v-for="link in item.spareParts" :key="link" :to="link.value">
+                                {{ link.name }}
+                            </NuxtLink>
+                        </div>
+                        <div class="h-banner__links">
+                            <h3>{{ $t('brands') }}</h3>
+                            <NuxtLink v-for="link in item.brands" :key="link" :to="link.value">
+                                <img :src="link.name" :alt="link.name">
+                            </NuxtLink>
+                        </div>
+                    </div>
+                </div>
                 <UiCarousel dots :timer="4" class="h-banner__main">
                     <div v-for="item in banner" :key="item" class="h-banner__slider" :class="item.color">
                         <div class="h-banner__info">
@@ -47,10 +69,18 @@
 const { isToolbar } = storeToRefs(useHelper())
 const { toggleToolbar, toggleWrapper, setCatalog } = useHelper()
 
+const valueMenu = ref(0)
+
 const toggleMenu = (value) => {
-    toggleToolbar()
-    toggleWrapper()
-    setCatalog(value)
+    if (valueMenu.value !== value) {
+        valueMenu.value = value
+    } else {
+        valueMenu.value = 0
+    }
+
+    // toggleToolbar()
+    // toggleWrapper()
+    // setCatalog(value)
 }
 
 const recommendations = reactive([
@@ -208,38 +238,224 @@ const recommendationsCatalog = reactive([
     }
 ])
 
-const catalog = reactive([
+const catalogs = reactive([
     {
         name: 'specialEquipment',
-        value: 1
+        value: 1,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'trucks',
-        value: 2
+        value: 2,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'agriculturalMachinery',
-        value: 3
+        value: 3,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'buses',
-        value: 4
+        value: 4,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'electricCars',
-        value: 5
+        value: 5,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'electricalGoods',
-        value: 6
+        value: 6,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'spareParts',
-        value: 7
+        value: 7,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     },
     {
         name: 'allCategories',
-        value: 8
+        value: 8,
+        transport: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        spareParts: [
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' },
+            { name: 'Products', value: '/products' }
+        ],
+        brands: [
+            { name: '/images/brands1.png', value: '/products' },
+            { name: '/images/brands2.png', value: '/products' },
+            { name: '/images/brands3.png', value: '/products' },
+            { name: '/images/brands4.png', value: '/products' },
+            { name: '/images/brands5.png', value: '/products' },
+            { name: '/images/brands6.png', value: '/products' }
+        ]
     }
 ])
 
@@ -274,6 +490,7 @@ const banner = reactive([
         display: flex;
         justify-content: space-between;
         grid-gap: 16px;
+        position: relative;
     }
 
     &__slider {
@@ -288,6 +505,70 @@ const banner = reactive([
     &__main {
         width: 100%;
         max-width: 818px;
+    }
+
+    &__wrapper {
+        position: absolute;
+        z-index: 2;
+        left: 295px;
+        width: calc(100% - 325px);
+        box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.16);
+    }
+
+    &__catalogs {
+        display: flex;
+        align-content: flex-start;
+        grid-gap: 32px;
+        padding: 16px 24px;
+        background: #FFFFFF;
+        width: 100%;
+        min-height: 500px;
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        grid-gap: 8px;
+
+        h3 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000000;
+            position: relative;
+            left: -1px;
+        }
+
+        a {
+            width: 200px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+
+            &:hover {
+                color: #FEC80B;
+            }
+        }
+
+        img {
+            width: 151px;
+            object-fit: contain;
+            transition: .2s;
+
+            &:hover {
+                opacity: .5;
+            }
+        }
+
+        .router-link-exact-active {
+            // color: #FEC80B;
+
+            &:hover {
+                color: #FEC80B;
+            }
+        }
     }
 
     &__info {
@@ -310,16 +591,16 @@ const banner = reactive([
     }
 
     &__menu {
-        padding: 16px;
+        padding: 8px 0;
         width: 265px;
         height: 100%;
         background: #FFFFFF;
         border-radius: 4px;
         display: flex;
         flex-direction: column;
-        grid-gap: 16px;
 
         li {
+            padding: 8px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -354,12 +635,22 @@ const banner = reactive([
                 }
             }
         }
-    }
 
-    img {
-        max-width: 50%;
-        height: 100%;
-        object-fit: contain;
+        .li-active {
+            background: #FEDF89;
+
+            &:hover {
+                p {
+                    color: #000000;
+                }
+            }
+        }
+
+        img {
+            max-width: 50%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     .blue {

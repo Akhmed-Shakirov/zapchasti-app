@@ -111,6 +111,8 @@ export default {
 
     largeSelectionOfElectricCars: 'Большой выбор Электрокаров',
     spareParts: 'Запчасти',
+    transport: 'Транспорт',
+    brands: 'Бренды',
 
     fromChinaOriginalDuplicates: 'из Китая оригинал и дубликаты',
     allTypesOfSparePartsForSpecialEquipment: 'Все виды запчастей для спецтехники',
