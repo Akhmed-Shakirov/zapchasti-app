@@ -27,6 +27,11 @@ i.icon {
 //     mask: url('/icons/test.svg') no-repeat center / contain;
 // }
 
+.check-select {
+    @extend i, .icon;
+    mask: url('/icons/check-select.svg') no-repeat center / contain;
+}
+
 .call {
     @extend i, .icon;
     mask: url('/icons/call.svg') no-repeat center / contain;

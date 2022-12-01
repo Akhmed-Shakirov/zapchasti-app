@@ -114,6 +114,8 @@ export default {
     transport: 'Транспорт',
     brands: 'Бренды',
 
+    amount: 'Количество',
+
     fromChinaOriginalDuplicates: 'из Китая оригинал и дубликаты',
     allTypesOfSparePartsForSpecialEquipment: 'Все виды запчастей для спецтехники',
 
@@ -151,6 +153,13 @@ export default {
     basketText2: 'Если в корзине были товары',
     basketText3: 'чтобы посмотреть список.',
     basketText4: 'войдите',
+
+    deleteSelected: 'Удалить выбранные',
+    chooseAll: 'Выбрать все',
+    checkout: 'Оформить покупку',
+    totalCost: 'Общая стоимость',
+    yourCart: 'Ваша корзина',
+    products: 'Товары',
 
     key6: 'value'
 }
