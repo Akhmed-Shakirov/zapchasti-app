@@ -11,15 +11,17 @@
                         </div>
 
                         <div class="product__price">
-                            <span>{{ $t('from') }}</span> <p>1 320 650</p>
-                            <p class="product__price-old">
-                                1 320 650
-                            </p>
+                            <div class="product__price-old">
+                                1 320 650 ₸
+                            </div>
+                            <p><span>{{ $t('from') }}</span> 1 320 650 ₸</p>
                         </div>
 
                         <div class="product__buttons">
                             <UiButton icon="basket" value="addBasket" />
                         </div>
+
+                        <p class="product__info-p">Оставьте заявку и мы перезвоним вам в ближайшее время</p>
 
                         <div class="product__helper">
                             <button>
@@ -42,20 +44,6 @@
                         <div class="product__link product__link-mb">
                             {{ $t('returnPolicy') }}
                         </div>
-
-                        <div class="product__text">
-                            <p>Габариты ТС</p><span /><p>6650х2380х3550 мм</p>
-                        </div>
-                        <div class="product__text">
-                            <p>Грузоустойчивость</p><span /><p>5335 кг</p>
-                        </div>
-                        <div class="product__text">
-                            <p>Внутренний объём</p><span /><p>22 м3</p>
-                        </div>
-
-                        <div class="product__link">
-                            {{ $t('seeFeatures') }}
-                        </div>
                     </div>
                 </div>
 
@@ -73,8 +61,10 @@
                     </div>
 
                     <div v-if="tab === 1" class="product__tabs-body">
-                        <h3>Характеристики модели XF-320</h3>
+                        <h3>Описание</h3>
+                        <h5>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h5>
 
+                        <h3>Характеристики</h3>
                         <div class="product__block">
                             <h4>Общие характеристики</h4>
                             <div class="product__block-info">
@@ -92,41 +82,17 @@
                     </div>
 
                     <div v-if="tab === 2" class="product__tabs-body">
-                        <h3>Отзывы</h3>
+                        <TheReview />
+                        <TheReview />
+                        <TheReview />
 
-                        <div class="product__block">
-                            <h4>Общие отзывы</h4>
-                            <div class="product__block-info">
-                                <div class="product__text">
-                                    <p>Габариты ТС</p><span /><p>6650х2380х3550 мм</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Грузоустойчивость</p><span /><p>5335 кг</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Внутренний объём</p><span /><p>22 м3</p>
-                                </div>
-                            </div>
+                        <div class="product__tabs-btn">
+                            <button>Показать еще</button>
                         </div>
                     </div>
 
                     <div v-if="tab === 3" class="product__tabs-body">
-                        <h3>Продавец</h3>
-
-                        <div class="product__block">
-                            <h4>Общие продавцы</h4>
-                            <div class="product__block-info">
-                                <div class="product__text">
-                                    <p>Габариты ТС</p><span /><p>6650х2380х3550 мм</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Грузоустойчивость</p><span /><p>5335 кг</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Внутренний объём</p><span /><p>22 м3</p>
-                                </div>
-                            </div>
-                        </div>
+                        <TheSalesman />
                     </div>
                 </div>
 
@@ -134,7 +100,7 @@
                     <div class="product__slider-info">
                         <div class="product__slider-content">
                             <h3>Подходящие запчасти</h3>
-                            <p>Посмотреть все</p>
+                            <NuxtLink to="/products">Посмотреть все</NuxtLink>
                         </div>
                         <div class="product__slider-content">
                             <BaseIcon class="product__slider-prev" icon="arrow" />
@@ -176,6 +142,131 @@ const toggleTab = (key) => {
 .product {
     padding-bottom: 50px;
 
+    &__price {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 4px;
+        margin-bottom: 16px;
+
+        p, span {
+            display: inline-block;
+            color: #000000;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: -0.02em;
+        }
+
+        &-old {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 32px;
+            text-decoration-line: line-through;
+            color: #BABABA !important;
+        }
+    }
+
+    &__tabs {
+
+        &-head {
+            display: flex;
+            align-items: center;
+            grid-gap: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E4E7EC;
+
+            button {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #98A2B3;
+
+                &:hover {
+                    color: #101828;
+                }
+            }
+
+            .active {
+                color: #101828;
+            }
+        }
+
+        &-btn {
+            display: flex;
+            justify-content: center;
+            padding: 18px;
+
+            button {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+                color: #101828;
+
+                padding: 12px 32px;
+                background: #F2F4F7;
+                border: 1px solid #F2F4F7;
+                border-radius: 8px;
+
+                &:hover {
+                    background: transparent;
+                    border: 1px solid #E4E7EC;
+                }
+            }
+        }
+
+        &-body {
+            margin-top: 32px;
+
+            h3 {
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 32px;
+                color: #000000;
+                margin-bottom: 8px;
+            }
+
+            h5 {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                color: #101828;
+                margin-bottom: 50px;
+            }
+        }
+    }
+
+    &__info-p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 32px;
+        color: #667085;
+        margin-bottom: 16px;
+    }
+
+    &__block {
+        width: 100%;
+        display: flex;
+        grid-gap: 100px;
+
+        &-info {
+            width: 40%;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 30px;
+            color: #000000;
+        }
+
+        .product__text p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #101828;
+        }
+    }
+
     &__slider {
         margin-top: 115px;
 
@@ -197,7 +288,7 @@ const toggleTab = (key) => {
                 color: #000000;
             }
 
-            p {
+            a {
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 24px;
@@ -257,28 +348,6 @@ const toggleTab = (key) => {
 
         &-red {
             background: #F04438;
-        }
-    }
-
-    &__price {
-        display: flex;
-        grid-gap: 8px;
-        margin-bottom: 16px;
-
-        p, span {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 32px;
-            color: #000000;
-        }
-
-        span {
-            font-size: 14px;
-        }
-
-        &-old {
-            text-decoration-line: line-through;
-            color: #BABABA !important;
         }
     }
 
@@ -360,65 +429,6 @@ const toggleTab = (key) => {
             line-height: 30px;
             flex: 1 1 auto;
             border-bottom: 1px dashed #000;
-        }
-    }
-
-    &__tabs {
-
-        &-head {
-            display: flex;
-            align-items: center;
-            grid-gap: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #E4E7EC;
-
-            button {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 24px;
-                color: #98A2B3;
-
-                &:hover {
-                    color: #101828;
-                }
-            }
-
-            .active {
-                color: #101828;
-            }
-        }
-
-        &-body {
-            margin-top: 32px;
-
-            h3 {
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 32px;
-                color: #000000;
-                margin-bottom: 24px;
-            }
-        }
-    }
-
-    &__block {
-        width: 100%;
-        display: flex;
-        grid-gap: 100px;
-
-        &-info {
-            width: 40%;
-        }
-
-        h4 {
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 30px;
-            color: #000000;
-        }
-
-        .product__text p {
-            font-weight: 400;
         }
     }
 }
