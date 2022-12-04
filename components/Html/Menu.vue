@@ -59,6 +59,8 @@ const select = reactive({
 
 <style scoped lang="scss">
 .menu {
+    position: relative;
+    z-index: 2;
     background: #FCFCFD;
     border-top: 1px solid #E4E7EC;
     border-bottom: 1px solid #E4E7EC;
