@@ -9,8 +9,34 @@
                 </li>
             </ul>
             <div class="menu__helper">
-                <UiSelect v-model="select.city" icon="geo" />|
-                <UiSelect v-model="select.lang" />
+                <div class="menu__select">
+                    <div class="menu__select-head">
+                        <BaseIcon icon="geo" /> Алматы <BaseIcon icon="chevron" />
+                    </div>
+                    <div class="menu__select-body">
+                        <div>
+                            <p>Где вы находитесь?</p>
+                            <UiSelect v-model="select.city" />
+                        </div>
+                    </div>
+                </div>
+                <div class="menu__select">
+                    <div class="menu__select-head">
+                        Русcкий - KZT <BaseIcon icon="chevron" />
+                    </div>
+                    <div class="menu__select-body">
+                        <div>
+                            <p>Язык</p>
+                            <UiSelect v-model="select.lang" />
+                        </div>
+                        <div>
+                            <p>Валюта</p>
+                            <UiSelect v-model="select.currency" />
+                        </div>
+                    </div>
+                </div>
+                <!-- <UiSelect v-model="select.city" icon="geo" />| -->
+                <!-- <UiSelect v-model="select.lang" /> -->
             </div>
         </div>
     </div>
@@ -33,12 +59,12 @@ const select = reactive({
 
 <style scoped lang="scss">
 .menu {
-    padding: 12px 0;
     background: #FCFCFD;
     border-top: 1px solid #E4E7EC;
     border-bottom: 1px solid #E4E7EC;
 
     .container {
+        height: 44px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -70,11 +96,100 @@ const select = reactive({
     }
 
     &__helper {
-        color: #E4E7EC;
         display: flex;
-        align-items: center;
-        grid-gap: 12px;
+        height: 100%;
+    }
 
+    &__select {
+        position: relative;
+
+        &-head {
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            grid-gap: 12px;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            padding: 0 15px;
+            user-select: none;
+            cursor: pointer;
+            position: relative;
+            transition: .2s;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: -1px;
+                left: 0;
+                background: transparent;
+                transition: .2s;
+            }
+
+            .geo {
+                color: #FEC80B;
+            }
+
+            .chevron {
+                transition: .2s;
+            }
+        }
+
+        &-body {
+            right: 0;
+            background: #ffffff;
+            position: absolute;
+            width: 392px;
+            border: 1px solid #E4E7EC;
+            opacity: 0;
+            z-index: -10;
+            transition: .2s;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            grid-gap: 16px;
+
+            &:deep(.select) {
+                .select__head {
+                    background: #fff;
+                    padding: 10px 16px;
+                }
+                .select__body {
+                    background: #fff;
+                }
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                grid-gap: 4px;
+            }
+        }
+
+        &:hover {
+            background: #ffffff;
+
+            .menu__select-head {
+
+                border-left: 1px solid #E4E7EC;
+                border-right: 1px solid #E4E7EC;
+
+                .chevron {
+                    transform: rotate(-180deg);
+                }
+
+                &::before {
+                    background: #ffffff;
+                }
+            }
+
+            .menu__select-body {
+                opacity: 1;
+                z-index: 0;
+            }
+        }
     }
 }
 </style>
