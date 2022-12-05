@@ -20,7 +20,7 @@
         <div ref="toolbarMenu" class="toolbar__menu" :class="{ 'toolbar__menu-active' : isToolbar }">
             <!-- Tabs -->
             <div class="toolbar__catalog">
-                <button v-for="catalog in catalogs" :key="catalog.value" :class="{ 'active' : catalog.value === catalogActive }" @click="() => setCatalog(catalog.value)">
+                <button v-for="catalog in catalogs" :key="catalog.value" :class="{ 'active' : catalog.value === catalogActive }" @mouseover="() => setCatalog(catalog.value)">
                     <span class="container">
                         {{ $t(catalog.name) }}
                     </span>

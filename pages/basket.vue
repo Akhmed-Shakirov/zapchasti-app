@@ -17,7 +17,6 @@
                                 </button>
                             </div>
                             <div class="b-basket__body">
-
                                 <div v-for="basket in baskets" :key="basket" class="b-basket__item">
                                     <div class="b-basket__item-choose">
                                         <UiCheckbox :is-active="basket.isCheck" />
@@ -30,7 +29,6 @@
                                     <h4>{{ basket.price }}</h4>
                                     <UiSelect v-model="basket.amount" :options="amountOptions" />
                                 </div>
-
                             </div>
                         </div>
                         <div class="b-basket__buy">

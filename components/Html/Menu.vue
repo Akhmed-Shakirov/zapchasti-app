@@ -152,6 +152,8 @@ const select = reactive({
             display: flex;
             flex-direction: column;
             grid-gap: 16px;
+            transform: scaleY(0);
+            transform-origin: 0 0;
 
             &:deep(.select) {
                 .select__head {
@@ -190,6 +192,7 @@ const select = reactive({
             .menu__select-body {
                 opacity: 1;
                 z-index: 0;
+                transform: scaleY(1) !important;
             }
         }
     }

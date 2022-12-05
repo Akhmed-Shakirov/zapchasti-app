@@ -21,7 +21,9 @@
                             <UiButton icon="basket" value="addBasket" />
                         </div>
 
-                        <p class="product__info-p">Оставьте заявку и мы перезвоним вам в ближайшее время</p>
+                        <p class="product__info-p">
+                            Оставьте заявку и мы перезвоним вам в ближайшее время
+                        </p>
 
                         <div class="product__helper">
                             <button>
@@ -100,7 +102,9 @@
                     <div class="product__slider-info">
                         <div class="product__slider-content">
                             <h3>Подходящие запчасти</h3>
-                            <NuxtLink to="/products">Посмотреть все</NuxtLink>
+                            <NuxtLink to="/products">
+                                Посмотреть все
+                            </NuxtLink>
                         </div>
                         <div class="product__slider-content">
                             <BaseIcon class="product__slider-prev" icon="arrow" />
