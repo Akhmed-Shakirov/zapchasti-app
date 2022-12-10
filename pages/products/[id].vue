@@ -84,6 +84,13 @@
                     </div>
 
                     <div v-if="tab === 2" class="product__tabs-body">
+                        <div class="review-filter">
+                            <button class="active">Все</button>
+                            <button>Новые</button>
+                            <button>Положительные</button>
+                            <button>Отрицательные</button>
+                        </div>
+
                         <TheReview />
                         <TheReview />
                         <TheReview />
@@ -176,13 +183,13 @@ const toggleTab = (key) => {
             display: flex;
             align-items: center;
             grid-gap: 32px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #E4E7EC;
 
             button {
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 24px;
+                min-width: 210px;
+                padding: 8px 16px;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 32px;
                 color: #98A2B3;
 
                 &:hover {
@@ -192,6 +199,7 @@ const toggleTab = (key) => {
 
             .active {
                 color: #101828;
+                background: #E4E7EC;
             }
         }
 
@@ -219,7 +227,9 @@ const toggleTab = (key) => {
         }
 
         &-body {
-            margin-top: 32px;
+            background: #FFFFFF;
+            border: 1px solid #E4E7EC;
+            padding: 24px;
 
             h3 {
                 font-weight: 600;
@@ -235,6 +245,29 @@ const toggleTab = (key) => {
                 line-height: 24px;
                 color: #101828;
                 margin-bottom: 50px;
+            }
+
+            .review-filter {
+                display: flex;
+                grid-gap: 12px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid #E4E7EC;
+                margin-bottom: 8px;
+            }
+
+            button {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                color: #000000;
+
+                padding: 4px 8px;
+                border: 1px solid #E4E7EC;
+                border-radius: 4px;
+            }
+
+            .active {
+                background: #E4E7EC;
             }
         }
     }

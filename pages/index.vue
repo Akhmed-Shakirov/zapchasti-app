@@ -2,7 +2,7 @@
     <NuxtLayout>
         <div class="h-banner" @mouseleave="() => toggleMenu(0)">
             <div class="container">
-                <ul class="h-banner__menu">
+                <ul class="h-banner__menu h-banner__menu-left">
                     <li
                         v-for="item in catalogs"
                         :key="item"
@@ -10,7 +10,7 @@
                         @click="() => toggleMenu(item.value)"
                     >
                         <div @mouseover="() => toggleMenu(item.value)" />
-                        <span />
+                        <BaseIcon :icon="item.name" />
                         <p>{{ $t(item.name) }}</p>
                         <BaseIcon icon="chevron" />
                     </li>
@@ -46,7 +46,21 @@
                         <img :src="`/images/${item.img}`" :alt="item.img">
                     </div>
                 </UiCarousel>
-                <div class="h-banner__menu" />
+                <div class="h-banner__menu h-banner__menu-right">
+                    <h2>BLACK FRIDAY <br> -70%</h2>
+                    <p>Скидка действует на определенные товары помеченные со скидкой</p>
+                    <img src="/images/%.png" alt="%">
+                </div>
+            </div>
+        </div>
+
+        <div class="h-big-catalog">
+            <div class="container">
+                <TheBigCatalog
+                    v-for="bigCatalog in bigCatalogs"
+                    :key="bigCatalog"
+                    :value="bigCatalog"
+                />
             </div>
         </div>
 
@@ -88,6 +102,33 @@ const toggleMenu = (value) => {
     // toggleWrapper()
     // setCatalog(value)
 }
+
+const bigCatalogs = reactive([
+    {
+        title: 'transport',
+        text: 'Выбор более 100 производителей транспорта',
+        links: [
+            { name: 'specialEquipment', url: '/products', img: '/images/card.png' },
+            { name: 'electricCars', url: '/products', img: '/images/card2.png' },
+            { name: 'buses', url: '/products', img: '/images/card3.png' },
+            { name: 'trucks', url: '/products', img: '/images/trucks.png' },
+            { name: 'agriculturalMachinery', url: '/products', img: '/images/agriculturalMachinery.png' },
+            { name: 'otherTransport', url: '/products', img: '/images/otherTransport.png' }
+        ]
+    },
+    {
+        title: 'spareParts',
+        text: 'Большой выбор разовидностей запчастей для всех типов транспорта и техники',
+        links: [
+            { name: 'specialEquipment', url: '/products', img: '/images/spareParts1.png' },
+            { name: 'electricCars', url: '/products', img: '/images/spareParts2.png' },
+            { name: 'buses', url: '/products', img: '/images/card3.png' },
+            { name: 'trucks', url: '/products', img: '/images/trucks2.png' },
+            { name: 'agriculturalMachinery', url: '/products', img: '/images/agriculturalMachinery.png' },
+            { name: 'otherTransport', url: '/products', img: '/images/otherTransport2.png' }
+        ]
+    }
+])
 
 const recommendations = reactive([
     {
@@ -467,29 +508,35 @@ const catalogs = reactive([
 
 const banner = reactive([
     {
-        img: 'card.png',
-        name: 'allTypesOfSparePartsForSpecialEquipment',
-        text: 'fromChinaOriginalDuplicates',
-        color: 'orange'
+        img: 'banner1.png',
+        name: 'Большой выбор автомобилей',
+        text: 'Напрямую с завода из Китая',
+        color: ''
     },
     {
-        img: 'card2.png',
-        name: 'allTypesOfSparePartsForSpecialEquipment',
-        text: 'fromChinaOriginalDuplicates',
-        color: 'blue'
+        img: 'banner2.png',
+        name: 'Электробайки, скутеры карты и много чего еще только у нас',
+        text: 'С официальных заводов из Китая до вашего дома',
+        color: 'black'
     },
     {
-        img: 'card3.png',
+        img: 'banner3.png',
+        name: 'Любой вид спецтехники и запчастей от лучших производителей',
+        text: 'Оставьте заявку для подробной консультации',
+        color: 'black'
+    },
+    {
+        img: 'banner4.png',
         name: 'allTypesOfSparePartsForSpecialEquipment',
         text: 'fromChinaOriginalDuplicates',
-        color: 'green'
+        color: 'black'
     }
 ])
 </script>
 
 <style lang="scss">
 .h-banner {
-    margin: 24px 0 64px;
+    margin: 24px 0 32px;
 
     .container {
         height: 400px;
@@ -497,15 +544,6 @@ const banner = reactive([
         justify-content: space-between;
         grid-gap: 16px;
         position: relative;
-    }
-
-    &__slider {
-        min-width: 100%;
-        height: 400px;
-        padding: 35px 50px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     &__main {
@@ -577,8 +615,118 @@ const banner = reactive([
         }
     }
 
+    &__menu {
+        padding: 8px 0;
+        width: 265px;
+        height: 100%;
+        background: #FFFFFF;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+
+        &-left {
+            grid-gap: 9px;
+
+            li {
+                padding: 8px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                grid-gap: 12px;
+                cursor: pointer;
+                user-select: none;
+                position: relative;
+
+                div {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                }
+
+                span {
+                    display: inline-block;
+                    width: 32px;
+                    height: 32px;
+                    background: #F2F4F7;
+                    border-radius: 4px;
+                }
+
+    p {
+        flex: 1 1 auto;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #000000;
+        transition: .2s;
+    }
+
+    .chevron {
+        transform: rotate(-90deg);
+    }
+
+    &:hover {
+        p {
+            color: #FFDA33;
+        }
+    }
+}
+
+.li-active {
+    background: #FEDF89;
+
+    &:hover {
+        p {
+            color: #000000;
+        }
+    }
+}
+
+img {
+    max-width: 50%;
+    height: 100%;
+    object-fit: contain;
+}
+
+        }
+
+        &-right {
+            position: relative;
+            background: #101828;
+            padding: 18px;
+            padding-right: 36px;
+
+            h2 {
+                font-weight: 600;
+                font-size: 60px;
+                line-height: 72px;
+                letter-spacing: -0.02em;
+                color: #FFFFFF;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #FFFFFF;
+            }
+
+            img {
+                position: absolute;
+                z-index: 0;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    }
+
     &__info {
-        max-width: 320px;
+        position: relative;
+        z-index: 1;
+        max-width: 455px;
 
         h2 {
             margin-bottom: 16px;
@@ -596,89 +744,40 @@ const banner = reactive([
         }
     }
 
-    &__menu {
-        padding: 8px 0;
-        width: 265px;
-        height: 100%;
-        background: #FFFFFF;
-        border-radius: 4px;
+    &__slider {
+        min-width: 100%;
+        height: 400px;
+        padding: 24px 36px;
         display: flex;
-        flex-direction: column;
-
-        li {
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            grid-gap: 8px;
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-
-            div {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2;
-            }
-
-            span {
-                display: inline-block;
-                width: 32px;
-                height: 32px;
-                background: #F2F4F7;
-                border-radius: 4px;
-            }
-
-            p {
-                flex: 1 1 auto;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 24px;
-                color: #000000;
-                transition: .2s;
-            }
-
-            .chevron {
-                transform: rotate(-90deg);
-            }
-
-            &:hover {
-                p {
-                    color: #FFDA33;
-                }
-            }
-        }
-
-        .li-active {
-            background: #FEDF89;
-
-            &:hover {
-                p {
-                    color: #000000;
-                }
-            }
-        }
+        position: relative;
 
         img {
-            max-width: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
     }
 
-    .blue {
-        background: #8FD8FD;
-    }
+    .black {
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 38.01%, rgba(0, 0, 0, 0) 91.08%);
 
-    .orange {
-        background: #FFD677;
+        h2, p {
+            color: #FFFFFF;
+        }
     }
+}
 
-    .green {
-        background: #15CF74;
+.h-big-catalog {
+    margin-bottom: 28px;
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 24px;
     }
 }
 </style>

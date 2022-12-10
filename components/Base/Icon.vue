@@ -35,6 +35,44 @@ i.icon {
     mask: url('/icons/star.svg') no-repeat center / contain;
 }
 
+.buses {
+    height: 9px;
+    @extend i, .icon;
+    mask: url('/icons/buses.svg') no-repeat center / contain;
+}
+
+.electricCars {
+    height: 10px;
+    @extend i, .icon;
+    mask: url('/icons/electricCars.svg') no-repeat center / contain;
+}
+
+.trucks {
+    height: 11px;
+    @extend i, .icon;
+    mask: url('/icons/trucks.svg') no-repeat center / contain;
+}
+
+.electricalGoods {
+    @extend i, .icon;
+    mask: url('/icons/electricalGoods.svg') no-repeat center / contain;
+}
+
+.spareParts {
+    @extend i, .icon;
+    mask: url('/icons/spareParts.svg') no-repeat center / contain;
+}
+
+.agriculturalMachinery {
+    @extend i, .icon;
+    mask: url('/icons/agriculturalMachinery.svg') no-repeat center / contain;
+}
+
+.specialEquipment {
+    @extend i, .icon;
+    mask: url('/icons/specialEquipment.svg') no-repeat center / contain;
+}
+
 .check-select {
     @extend i, .icon;
     mask: url('/icons/check-select.svg') no-repeat center / contain;
@@ -73,6 +111,12 @@ i.icon {
 .geo {
     @extend i, .icon;
     mask: url('/icons/geo.svg') no-repeat center / contain;
+}
+
+.allCategories {
+    @extend i, .icon;
+    background: #98A2B3;
+    mask: url('/icons/allCategories.svg') no-repeat center / contain;
 }
 
 .grid {

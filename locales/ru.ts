@@ -71,9 +71,10 @@ export default {
     buses: 'Автобусы',
 
     trucks: 'Грузовая техника',
-    agriculturalMachinery: 'Сельхозтехника',
+    agriculturalMachinery: 'Сельхоз техника',
     electricalGoods: 'Электротовары',
     allCategories: 'Все категории',
+    otherTransport: 'Прочий транспорт',
 
     manufacturerBrand: 'Марка производителя',
     equipmentType: 'Тип техники',
