@@ -49,7 +49,7 @@
                 <div class="h-banner__menu h-banner__menu-right">
                     <h2>BLACK FRIDAY <br> -70%</h2>
                     <p>Скидка действует на определенные товары помеченные со скидкой</p>
-                    <img src="/images/%.png" alt="%">
+                    <img src="/images/discount.png" alt="%">
                 </div>
             </div>
         </div>
