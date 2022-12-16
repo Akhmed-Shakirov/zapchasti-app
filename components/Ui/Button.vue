@@ -1,5 +1,5 @@
 <template>
-    <button class="btn" :class="{ 'btn-out' : out, 'btn-icon' : icon, 'btn-blue' : blue }">
+    <button class="btn" :class="{ 'btn-out' : out, 'btn-icon' : icon, 'btn-blue' : blue, 'btn-green' : green, 'btn-gray' : gray }">
         <BaseIcon class="icons" :class="{ 'icons-main' : icon && !animat }" :icon="icon" />
         <BaseIcon class="icons" :class="{ 'icons-active' : icon && animat && iconAni }" :icon="iconAni" />
         {{ $t(value) }} <span v-if="count">{{ count }}</span>
@@ -22,6 +22,14 @@ const props = defineProps({
         default: undefined
     },
     blue: {
+        type: Boolean,
+        default: false
+    },
+    green: {
+        type: Boolean,
+        default: false
+    },
+    gray: {
         type: Boolean,
         default: false
     },
@@ -81,6 +89,28 @@ const props = defineProps({
 
         &:hover {
             color: #1570EF;
+            background: #FFFFFF;
+        }
+    }
+
+    &-green {
+        border: 2px solid #0DB14B;
+        background: #0DB14B;
+        color: #FFFFFF;
+
+        &:hover {
+            color: #0DB14B;
+            background: #FFFFFF;
+        }
+    }
+
+    &-gray {
+        border: 2px solid #E4E7EC;
+        background: #E4E7EC;
+        color: #000000;
+
+        &:hover {
+            color: #000000;
             background: #FFFFFF;
         }
     }

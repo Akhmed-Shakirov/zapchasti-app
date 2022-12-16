@@ -1,135 +1,76 @@
 <template>
     <NuxtLayout>
-        <HtmlTitle code title="palfinger" :links="[ { name: 'categories', value: 'categories' } ]" />
+        <HtmlTitle :links="[ { name: 'categories', value: 'categories' } ]" />
         <div class="product">
             <div class="container">
-                <div class="product__info">
-                    <BaseGallery />
-                    <div class="product__description">
-                        <div class="product__stock" :class="{ 'product__stock-grin' : isStock, 'product__stock-red' : !isStock }">
-                            {{ isStock ? $t('inStock') : $t('notAvailable') }}
+                <div class="product__content">
+                    <div class="product__box">
+                        <BaseGallery :images="[
+                            '/images/card.png', '/images/card.png',
+                            '/images/card.png', '/images/card.png',
+                            '/images/card.png', '/images/card.png',
+                            '/images/card.png', '/images/card.png'
+                        ]" />
+                    </div>
+                    <div class="product__box">
+                        <div class="product__description">
+                            <h3>Описание</h3>
+                            <p>is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction</p>
+                            <div class="product-hr" />
+                            <h3>Характеристики</h3>
+                            <ul>
+                                <h4>wadw</h4>
+                                <li>
+                                    <span>Эксплуатационная масса</span>
+                                    <span>5 900 кг</span>
+                                </li>
+                                <li>
+                                    <span>Эксплуатационная масса</span>
+                                    <span>5 900 кг</span>
+                                </li>
+                                <li>
+                                    <span>Эксплуатационная масса</span>
+                                    <span>5 900 кг</span>
+                                </li>
+                            </ul>
                         </div>
-
+                    </div>
+                </div>
+                <div class="product__content">
+                    <div class="product__box">
                         <div class="product__price">
-                            <div class="product__price-old">
-                                1 320 650 ₸
+                            <h2>Super Socco TC MAX SPOKE WHEEL</h2>
+                            <h3>538 000 ₸</h3>
+                            <div class="product__price-status">
+                                <p>В наличии</p>
+                                <p>Новый</p>
                             </div>
-                            <p><span>{{ $t('from') }}</span> 1 320 650 ₸</p>
-                        </div>
+                            <span>Код товара: 01234567 <BaseIcon icon="copy" /></span>
 
-                        <div class="product__buttons">
-                            <UiButton icon="basket" value="addBasket" />
-                        </div>
+                            <!-- <UiButton value="Получить корпоративное предложение" gray iconR="download" /> -->
+                            <!-- <UiButton value="Оставить заявку" /> -->
+                            <UiButton value="addBasket" />
 
-                        <p class="product__info-p">
-                            Оставьте заявку и мы перезвоним вам в ближайшее время
-                        </p>
-
-                        <div class="product__helper">
-                            <button>
-                                <BaseIcon icon="like" />
-                                {{ $t('toFavorites') }}
-                            </button>
-                            <button>
-                                <BaseIcon icon="share" />
-                                {{ $t('share') }}
-                            </button>
-                        </div>
-
-                        <div class="product__manufacturer">
-                            {{ $t('bodyManufacturer') }}: <span>PULLGINGER</span>
-                        </div>
-
-                        <div class="product__link">
-                            {{ $t('paymentDeliveryRules') }}
-                        </div>
-                        <div class="product__link product__link-mb">
-                            {{ $t('returnPolicy') }}
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product__tabs">
-                    <div class="product__tabs-head">
-                        <button :class="{ 'active' : tab === 1 }" @click="() => toggleTab(1)">
-                            {{ $t('characteristics') }}
-                        </button>
-                        <button :class="{ 'active' : tab === 2 }" @click="() => toggleTab(2)">
-                            {{ $t('reviews') }}
-                        </button>
-                        <button :class="{ 'active' : tab === 3 }" @click="() => toggleTab(3)">
-                            {{ $t('salesman') }}
-                        </button>
-                    </div>
-
-                    <div v-if="tab === 1" class="product__tabs-body">
-                        <h3>Описание</h3>
-                        <h5>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h5>
-
-                        <h3>Характеристики</h3>
-                        <div class="product__block">
-                            <h4>Общие характеристики</h4>
-                            <div class="product__block-info">
-                                <div class="product__text">
-                                    <p>Габариты ТС</p><span /><p>6650х2380х3550 мм</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Грузоустойчивость</p><span /><p>5335 кг</p>
-                                </div>
-                                <div class="product__text">
-                                    <p>Внутренний объём</p><span /><p>22 м3</p>
-                                </div>
+                            <div class="product__info">
+                                <baseIcon icon="circle-information" />
+                                <p>Для приобретения товара или уточнения вопросов, оставьте заявку на товар и мы свяжемся с вами в течении 10 минут</p>
                             </div>
                         </div>
                     </div>
-
-                    <div v-if="tab === 2" class="product__tabs-body">
-                        <div class="review-filter">
-                            <button class="active">Все</button>
-                            <button>Новые</button>
-                            <button>Положительные</button>
-                            <button>Отрицательные</button>
-                        </div>
-
-                        <TheReview />
-                        <TheReview />
-                        <TheReview />
-
-                        <div class="product__tabs-btn">
-                            <button>Показать еще</button>
+                    <div class="product__box">
+                        <div class="product__salesman">
+                            <h4>ПРОДАВЕЦ</h4>
+                            <div class="product__salesman-images">
+                                <img src="/images/brands1.png" alt="brands1.png">
+                                <img src="/images/shield-check.png" alt="shield-check.png">
+                            </div>
+                            <h3>Super Socco</h3>
+                            <p class="scaleY" :class="{ 'scaleY-active' : isScaley }">is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction</p>
+                            <button @click="isScaley = !isScaley">
+                                {{ isScaley ? 'скрыть' : 'подробнее...' }}
+                            </button>
                         </div>
                     </div>
-
-                    <div v-if="tab === 3" class="product__tabs-body">
-                        <TheSalesman />
-                    </div>
-                </div>
-
-                <div class="product__slider">
-                    <div class="product__slider-info">
-                        <div class="product__slider-content">
-                            <h3>Подходящие запчасти</h3>
-                            <NuxtLink to="/products">
-                                Посмотреть все
-                            </NuxtLink>
-                        </div>
-                        <div class="product__slider-content">
-                            <BaseIcon class="product__slider-prev" icon="arrow" />
-                            <BaseIcon class="product__slider-next" icon="arrow" />
-                        </div>
-                    </div>
-
-                    <UiCarousel arrow :show="4" :scroll="2" :gap="24" :timer="4" prev="product__slider-prev" next="product__slider-next">
-                        <TheCard stock :is-stock="false" />
-                        <TheCard />
-                        <TheCard stock :is-stock="true" />
-                        <TheCard stock :is-stock="false" />
-                        <TheCard />
-                        <TheCard stock :is-stock="true" />
-                        <TheCard stock :is-stock="false" />
-                        <TheCard />
-                        <TheCard stock :is-stock="true" />
-                    </UiCarousel>
                 </div>
             </div>
         </div>
@@ -147,325 +88,233 @@ const toggleTab = (key) => {
     }
 }
 
+const isScaley = ref(false)
+
 </script>
 
 <style lang="scss">
 .product {
     padding-bottom: 50px;
 
-    &__price {
-        display: flex;
-        flex-direction: column;
-        grid-gap: 4px;
-        margin-bottom: 16px;
+    &-hr {
+        width: 100%;
+        height: 1px;
+        background: #E4E7EC;
+        margin: 32px 0;
+    }
 
-        p, span {
-            display: inline-block;
-            color: #000000;
-            font-weight: 600;
-            font-size: 36px;
-            line-height: 44px;
-            letter-spacing: -0.02em;
-        }
+    .scaleY {
+        display: inline-block;
+        overflow: hidden;
+        height: 60px;
+        transition: .2s;
 
-        &-old {
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 32px;
-            text-decoration-line: line-through;
-            color: #BABABA !important;
+        &-active {
+            height: auto;
         }
     }
 
-    &__tabs {
-
-        &-head {
-            display: flex;
-            align-items: center;
-            grid-gap: 32px;
-
-            button {
-                min-width: 210px;
-                padding: 8px 16px;
-                font-weight: 400;
-                font-size: 24px;
-                line-height: 32px;
-                color: #98A2B3;
-
-                &:hover {
-                    color: #101828;
-                }
-            }
-
-            .active {
-                color: #101828;
-                background: #E4E7EC;
-            }
-        }
-
-        &-btn {
-            display: flex;
-            justify-content: center;
-            padding: 18px;
-
-            button {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 20px;
-                color: #101828;
-
-                padding: 12px 32px;
-                background: #F2F4F7;
-                border: 1px solid #F2F4F7;
-                border-radius: 8px;
-
-                &:hover {
-                    background: transparent;
-                    border: 1px solid #E4E7EC;
-                }
-            }
-        }
-
-        &-body {
-            background: #FFFFFF;
-            border: 1px solid #E4E7EC;
-            padding: 24px;
-
-            h3 {
-                font-weight: 600;
-                font-size: 18px;
-                line-height: 32px;
-                color: #000000;
-                margin-bottom: 8px;
-            }
-
-            h5 {
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 24px;
-                color: #101828;
-                margin-bottom: 50px;
-            }
-
-            .review-filter {
-                display: flex;
-                grid-gap: 12px;
-                padding-bottom: 16px;
-                border-bottom: 1px solid #E4E7EC;
-                margin-bottom: 8px;
-            }
-
-            button {
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 20px;
-                color: #000000;
-
-                padding: 4px 8px;
-                border: 1px solid #E4E7EC;
-                border-radius: 4px;
-            }
-
-            .active {
-                background: #E4E7EC;
-            }
-        }
-    }
-
-    &__info-p {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 32px;
+    h4 {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
         color: #667085;
         margin-bottom: 16px;
     }
 
-    &__block {
-        width: 100%;
-        display: flex;
-        grid-gap: 100px;
+    ul {
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #E4E7EC;
 
-        &-info {
-            width: 40%;
+            // &:last-child {
+            //     border-bottom: 1px solid transparent;
+            // }
         }
 
-        h4 {
+        span {
             font-weight: 400;
-            font-size: 16px;
-            line-height: 30px;
-            color: #000000;
-        }
-
-        .product__text p {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 24px;
-            color: #101828;
+            font-size: 14px;
+            line-height: 20px;
+            color: #344054;
         }
     }
 
-    &__slider {
-        margin-top: 115px;
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+    }
 
-        &-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    &__description {
+        padding: 24px 16px;
+
+        h4 {
+            margin: 24px 0 8px;
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 27px;
+            color: #000000;
             margin-bottom: 16px;
         }
 
-        &-content {
+        p {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #344054;
+        }
+    }
+
+    &__price {
+        padding: 24px 16px;
+
+        h2 {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: #101828;
+            margin-bottom: 16px;
+        }
+
+        h3 {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+            letter-spacing: -0.02em;
+            color: #101828;
+            margin-bottom: 16px;
+        }
+
+        &-status {
             display: flex;
             align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
 
-            h3 {
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 32px;
-                color: #000000;
-            }
-
-            a {
+            p {
                 font-weight: 500;
-                font-size: 16px;
-                line-height: 24px;
-                color: #FDB022;
+                font-size: 12px;
+                line-height: 15px;
+                color: #475467;
+                padding: 4px 8px;
+                background: #E4E7EC;
+                border-radius: 4px;
+                display: inline;
             }
+        }
 
-            &:first-child {
-                grid-gap: 16px;
-            }
+        span {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 32px;
+            color: #98A2B3;
 
-            &:last-child {
-                grid-gap: 20px;
-            }
-
-            .icon {
-                color: #667085;
-                transition: .2s;
+            i {
                 cursor: pointer;
 
                 &:hover {
-                    color: #000000;
+                    color: #98A2B3;
                 }
             }
         }
 
-        &-next {
-            transform: rotate(180deg);
-        }
-
-    }
-
-    &__info {
-        display: flex;
-        grid-gap: 48px;
-        margin-bottom: 80px;
-    }
-
-    &__description {
-        width: calc(100% - 840px);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    &__stock {
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        color: #FFFFFF;
-        padding: 4px 12px;
-        border-radius: 8px;
-        margin-bottom: 16px;
-
-        &-grin {
-            background: #86D448;
-        }
-
-        &-red {
-            background: #F04438;
+        .btn {
+            width: 100%;
         }
     }
 
-    &__buttons {
-        display: flex;
-        grid-gap: 16px;
-        margin-bottom: 16px;
-    }
+    &__salesman {
+        padding: 16px;
 
-    &__helper {
-        display: flex;
-        grid-gap: 16px;
-        margin-bottom: 50px;
+        &-images {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            img:last-child {
+                padding: 16px 0;
+            }
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 28px;
+            color: #101828;
+            margin-bottom: 4px;
+        }
+
+        p, button {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #344054;
+        }
 
         button {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 32px;
-            color: #848484;
-            text-align: left;
-            grid-gap: 12px;
+            color: #1570EF;
+            display: inline;
 
             &:hover {
-                color: #000000;
+                color: #64a9f4;
             }
         }
     }
 
-    &__manufacturer {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 32px;
-        color: #000000;
-        margin-bottom: 18px;
-
-        span {
-            font-weight: 800;
-            line-height: 20px;
-            padding: 4px 8px;
-            background: #FFDA33;
-            border: 2px solid #000000;
-            border-radius: 12px;
-            margin-left: 12px;
-        }
-    }
-
-    &__link {
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 32px;
-        text-decoration-line: underline;
-        color: #848484;
-        transition: .2s;
-        user-select: none;
-        cursor: pointer;
-
-        &:hover {
-            color: #000;
-        }
-
-        &-mb {
-            margin-bottom: 24px;
-        }
-    }
-
-    &__text {
-        display: flex;
-        justify-content: space-between;
+    &__content {
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &:first-child {
+            max-width: 911px;
+        }
+
+        &:last-child {
+            max-width: 444px;
+        }
+    }
+
+    &__box {
+        background: #FFFFFF;
+        border-radius: 8px;
+        width: 100%;
+        min-height: 100px;
+    }
+
+    &__info {
+        margin-top: 24px;
+        padding: 16px 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        background: #F9FAFB;
+        border-radius: 8px;
+
+        i {
+            color: #667085;
+        }
 
         p {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 32px;
-            color: #000000;
-        }
-
-        span {
-            line-height: 30px;
-            flex: 1 1 auto;
-            border-bottom: 1px dashed #000;
+            max-width: 352px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            color: #667085;
         }
     }
 }

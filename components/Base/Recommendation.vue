@@ -60,7 +60,6 @@ const props = defineProps({
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-start;
         justify-content: space-between;
         grid-gap: 24px;
     }
@@ -69,7 +68,8 @@ const props = defineProps({
         position: relative;
         padding: 24px 16px 16px;
         width: 290px;
-        min-height: 523px;
+        min-height: 417px;
+        border-radius: 8px;
 
         &-blue {
             background: #8FD8FD;

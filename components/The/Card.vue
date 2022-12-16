@@ -8,35 +8,25 @@
         />
         <img src="/images/card.png" alt="card">
         <div class="card__info">
-            <h3>Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8</h3>
+            <h3>Changan UNI-T</h3>
             <p v-if="true">
-                {{ $t('from') }} 1 352 000
+                9 992 000 ₸
             </p>
             <p v-else>
                 {{ $t('priceRequest') }}
             </p>
+            <h4>Кроссовер • ДВС • 1.5 л</h4>
             <div class="card__action">
                 <UiButton v-if="!basket" class="add" value="addBasket" />
-                <div v-else class="card__basket">
-                    <UiButton class="basket" value="basket" icon-r="basket" />
-                    <sup>1</sup>
-
-                    <div class="card__total">
-                        <UiButton value="-" />
-                        <span>1</span>
-                        <UiButton value="+" />
-                    </div>
-                </div>
-            </div>
-            <div class="card__download">
-                {{ $t('getCP') }}
-                <BaseIcon icon="download" />
+                <UiButton v-else class="add" value="Добавлено в корзину" icon-r="shopping-cart" green />
             </div>
         </div>
         <div v-if="stock" class="card__stock" :class="{ 'card__stock-grin' : isStock, 'card__stock-red' : !isStock }">
             {{ isStock ? $t('inStock') : $t('notAvailable') }}
         </div>
-        <BaseIcon icon="like" />
+        <div class="like-wrapper">
+            <BaseIcon icon="like" />
+        </div>
     </div>
 </template>
 
@@ -65,6 +55,7 @@ const isHover = ref(false)
     background: #FFFFFF;
     box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
     position: relative;
+    border-radius: 8px;
 
     img {
         position: relative;
@@ -73,8 +64,10 @@ const isHover = ref(false)
         width: 100%;
         height: 241px;
         object-fit: contain;
-        background: #2F2F2F;
+        background: #E4E7EC;
+        box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
         transition: .2s;
+        border-radius: 8px 8px 0 0;
     }
 
     &__basket {
@@ -139,6 +132,9 @@ const isHover = ref(false)
     }
 
     &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 16px 12px;
 
         h3 {
@@ -146,21 +142,29 @@ const isHover = ref(false)
             font-size: 16px;
             line-height: 22px;
             color: #000000;
-            margin-bottom: 24px;
+            margin-bottom: 8px;
             transition: .2s;
         }
 
         p {
-            font-weight: 600;
-            font-size: 20px;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -0.02em;
             line-height: 32px;
             color: #000000;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
+        }
+
+        h4 {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 22px;
+            color: #475467;
+            margin-bottom: 12px;
         }
 
         .add {
             width: 100%;
-            margin-bottom: 8px;
         }
 
     }
@@ -213,20 +217,38 @@ const isHover = ref(false)
     }
 
     &__action {
+        width: 100%;
         position: relative;
         z-index: 2;
     }
-    .like {
-        color: #FFDA33;
+
+    .like-wrapper {
+        background: #FFFFFF;
+        padding: 2px;
+        border-radius: 50%;
         position: absolute;
         z-index: 2;
         top: 18px;
         right: 18px;
         cursor: pointer;
         transition: .2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+
+        .like {
+            color: #FFDA33;
+            transition: .2s;
+        }
 
         &:hover {
-            opacity: .5;
+            background: #FFDA33;
+
+            .like {
+                color: #FFFFFF;
+            }
         }
     }
 

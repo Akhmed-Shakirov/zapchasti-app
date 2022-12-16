@@ -1,68 +1,110 @@
 <template>
     <div class="gallery">
-        <div class="gallery__bar">
-            <img src="/images/card.png" class="active" alt="card">
-            <img src="/images/card.png" alt="card">
-            <img src="/images/card.png" alt="card">
-            <img src="/images/card.png" alt="card">
-            <img src="/images/card.png" alt="card">
-
-            <BaseIcon icon="chevron" />
-        </div>
-        <img src="/images/card.png" class="gallery__main" alt="card">
+        <Carousel
+            id="gallery"
+            ref="carousel2"
+            v-model="currentSlide"
+            :items-to-show="1"
+            :wrap-around="false"
+        >
+            <Slide v-for="(slide, index) in images" :key="slide">
+                <img :src="slide" class="gallery__main" alt="card" @click="() => showImg(index)">
+            </Slide>
+        </Carousel>
+        <Carousel
+            id="thumbnails"
+            ref="carousel"
+            v-model="currentSlide"
+            :items-to-show="5"
+            :wrap-around="true"
+        >
+            <Slide v-for="(slide, index) in images" :key="slide">
+                <img :src="slide" class="gallery__mini" alt="card" @click="() => slideTo(index)">
+            </Slide>
+        </Carousel>
+        <vue-easy-lightbox
+            :visible="visibleRef"
+            :imgs="images"
+            :index="indexRef"
+            @hide="onHide"
+        />
     </div>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+import { Carousel, Slide } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+import 'vue-easy-lightbox/external-css/vue-easy-lightbox.css'
+import VueEasyLightbox from 'vue-easy-lightbox'
+
+const props = defineProps({
+    // eslint-disable-next-line vue/require-default-prop
+    images: Array
+})
+
+const visibleRef = ref(false)
+const indexRef = ref(0)
+
+const showImg = (index) => {
+    indexRef.value = index
+    visibleRef.value = true
+}
+const onHide = () => {
+    visibleRef.value = false
+}
+const currentSlide = ref(0)
+
+const carousel = ref()
+const carousel2 = ref()
+
+const slideTo = (val) => {
+    currentSlide.value = val
+}
+
+function updateSlideWidth () {
+    if (!root.value) {
+        return
+    }
+    const rect = root.value.getBoundingClientRect()
+    slideWidth.value = rect.width / config.itemsToShow
+}
+onMounted(() => {
+    setTimeout(() => {
+        carousel.value.updateSlideWidth()
+        carousel2.value.updateSlideWidth()
+    }, 200)
+})
+</script>
+
 <style lang="scss">
 .gallery {
-    display: flex;
-    grid-gap: 24px;
 
-    &__bar {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        grid-gap: 16px;
+    #gallery {
+        background: #E4E7EC;
+    }
 
-        img {
-            width: 89px;
-            height: 94px;
-            object-fit: cover;
-            background: #2F2F2F;
-            cursor: pointer;
-            user-select: none;
-            transition: .2s;
-
-            &:hover {
-                opacity: .8;
-            }
-        }
-
-        .icon {
-            cursor: pointer;
-            transition: .2s;
-
-            &:hover {
-                opacity: .5;
-            }
-        }
-
-        .active {
-            border: 3px solid #FFDA33;
-            box-shadow: 0px 0.328713px 2.6297px rgba(0, 0, 0, 0.05);
-
-            &:hover {
-                opacity: 1;
-            }
-        }
+    #thumbnails {
+        border: 1px solid #E4E7EC;
     }
 
     &__main {
-        width: 675px;
-        height: 574px;
+        padding: 20px;
+        max-width: 911px;
+        max-height: 500px;
+        height: 100%;
+        width: 100%;
         object-fit: contain;
-        background: #2F2F2F;
-        box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    &__mini {
+        padding: 5px;
+        max-width: 182px;
+        max-height: 100px;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        border-right: 1px solid #E4E7EC;
     }
 }
 </style>

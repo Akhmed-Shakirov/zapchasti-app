@@ -53,6 +53,11 @@ i.icon {
     mask: url('/icons/trucks.svg') no-repeat center / contain;
 }
 
+.shopping-cart {
+    @extend i, .icon;
+    mask: url('/icons/shopping-cart.svg') no-repeat center / contain;
+}
+
 .electricalGoods {
     @extend i, .icon;
     mask: url('/icons/electricalGoods.svg') no-repeat center / contain;
@@ -106,6 +111,11 @@ i.icon {
 .download {
     @extend i, .icon;
     mask: url('/icons/download.svg') no-repeat center / contain;
+}
+
+.circle-information {
+    @extend i, .icon;
+    mask: url('/icons/circle-information.svg') no-repeat center / contain;
 }
 
 .geo {
