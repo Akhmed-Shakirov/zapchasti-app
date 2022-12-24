@@ -4,39 +4,46 @@
             <div class="container">
                 <ul class="h-banner__menu h-banner__menu-left">
                     <li
-                        v-for="item in catalogs"
+                        v-for="item in main"
                         :key="item"
-                        :class="{ 'li-active' : item.value === valueMenu }"
-                        @click="() => toggleMenu(item.value)"
+                        :class="{ 'li-active' : item.id === valueMenu }"
+                        @click="() => toggleMenu(item.id)"
                     >
-                        <div @mouseover="() => toggleMenu(item.value)" />
-                        <BaseIcon :icon="item.name" />
+                        <div @mouseover="() => toggleMenu(item.id)" />
+                        <BaseIcon :icon="item.icon" />
                         <p>{{ $t(item.name) }}</p>
                         <BaseIcon icon="chevron" />
                     </li>
                 </ul>
-                <div v-for="item in catalogs" :key="item" class="h-banner__wrapper">
-                    <div v-if="item.value === valueMenu" class="h-banner__catalogs">
-                        <div class="h-banner__links">
-                            <h3>{{ $t('transport') }}</h3>
-                            <NuxtLink v-for="link in item.transport" :key="link" :to="link.value">
-                                {{ link.name }}
-                            </NuxtLink>
+                <div class="h-banner__wrapper">
+                    <template v-for="item in main">
+                        <div v-if="item.id === valueMenu" :key="item" class="h-banner__catalogs">
+                            <div v-if="item.transport.length" class="h-banner__links">
+                                <h3>{{ $t('transport') }}</h3>
+                                <NuxtLink v-for="link in item.transport" :key="link" :to="`/products?categories=${link.id}`">
+                                    {{ link.name }}
+                                </NuxtLink>
+                            </div>
+                            <div v-if="item.spareParts.length" class="h-banner__links">
+                                <h3>{{ $t('spareParts') }}</h3>
+                                <NuxtLink v-for="link in item.spareParts" :key="link" :to="`/products?categories=${link.id}`">
+                                    {{ link.name }}
+                                </NuxtLink>
+                            </div>
+                            <div v-if="item.brands.length" class="h-banner__links">
+                                <h3>{{ $t('brands') }}</h3>
+                                <a v-for="link in item.brands" :key="link" :href="`http://${link.url}`" target="_blank">
+                                    <!-- <img :src="link.image" :alt="link.name"> -->
+                                    {{ link.name }}
+                                </a>
+                            </div>
+                            <div v-if="!item.transport.length && !item.spareParts.length && !item.brands.length">
+                                <h3>Нет товаров</h3>
+                            </div>
                         </div>
-                        <div class="h-banner__links">
-                            <h3>{{ $t('spareParts') }}</h3>
-                            <NuxtLink v-for="link in item.spareParts" :key="link" :to="link.value">
-                                {{ link.name }}
-                            </NuxtLink>
-                        </div>
-                        <div class="h-banner__links">
-                            <h3>{{ $t('brands') }}</h3>
-                            <NuxtLink v-for="link in item.brands" :key="link" :to="link.value">
-                                <img :src="link.name" :alt="link.name">
-                            </NuxtLink>
-                        </div>
-                    </div>
+                    </template>
                 </div>
+
                 <UiCarousel dots :timer="4" class="h-banner__main">
                     <div v-for="item in banner" :key="item" class="h-banner__slider" :class="item.color">
                         <div class="h-banner__info">
@@ -46,6 +53,7 @@
                         <img :src="`/images/${item.img}`" :alt="item.img">
                     </div>
                 </UiCarousel>
+
                 <div class="h-banner__menu h-banner__menu-right">
                     <h2>BLACK FRIDAY <br> -70%</h2>
                     <p>Скидка действует на определенные товары помеченные со скидкой</p>
@@ -64,15 +72,6 @@
             </div>
         </div>
 
-        <!-- <BaseRecommendation
-            v-for="item in recommendations"
-            :key="item"
-            :title="item.title"
-            :color="item.color"
-            :catalog="item.catalog"
-            :items="item.items"
-        /> -->
-
         <BaseRecommendationCatalog
             v-for="item in recommendationsCatalog"
             :key="item"
@@ -87,7 +86,9 @@
 
 <script setup>
 const { isToolbar } = storeToRefs(useHelper())
-const { toggleToolbar, toggleWrapper, setCatalog } = useHelper()
+const { toggleToolbar, toggleWrapper } = useHelper()
+const { main } = storeToRefs(useCatalog())
+const { setCatalog } = useCatalog()
 
 const valueMenu = ref(0)
 
@@ -97,10 +98,6 @@ const toggleMenu = (value) => {
     } else {
         valueMenu.value = 0
     }
-
-    // toggleToolbar()
-    // toggleWrapper()
-    // setCatalog(value)
 }
 
 const bigCatalogs = reactive([
@@ -168,7 +165,7 @@ const recommendations = reactive([
 
 const recommendationsCatalog = reactive([
     {
-        title: 'specialEquipment',
+        title: 'electricCars',
         color: 'blue',
         catalog: {
             img: 'card2.png',
@@ -226,7 +223,7 @@ const recommendationsCatalog = reactive([
         link: 'allModels'
     },
     {
-        title: 'electricCars',
+        title: 'specialEquipment',
         color: 'orange',
         catalog: {
             img: 'card.png',
@@ -285,227 +282,6 @@ const recommendationsCatalog = reactive([
     }
 ])
 
-const catalogs = reactive([
-    {
-        name: 'specialEquipment',
-        value: 1,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'trucks',
-        value: 2,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'agriculturalMachinery',
-        value: 3,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'buses',
-        value: 4,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'electricCars',
-        value: 5,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'electricalGoods',
-        value: 6,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'spareParts',
-        value: 7,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    },
-    {
-        name: 'allCategories',
-        value: 8,
-        transport: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        spareParts: [
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' },
-            { name: 'Products', value: '/products' }
-        ],
-        brands: [
-            { name: '/images/brands1.png', value: '/products' },
-            { name: '/images/brands2.png', value: '/products' },
-            { name: '/images/brands3.png', value: '/products' },
-            { name: '/images/brands4.png', value: '/products' },
-            { name: '/images/brands5.png', value: '/products' },
-            { name: '/images/brands6.png', value: '/products' }
-        ]
-    }
-])
-
 const banner = reactive([
     {
         img: 'banner1.png',
@@ -556,7 +332,7 @@ const banner = reactive([
         z-index: 2;
         left: 295px;
         width: calc(100% - 325px);
-        box-shadow: 0px 16px 16px rgba(0, 0, 0, 0.16);
+        box-shadow: 8px 16px 16px rgba(0, 0, 0, 0.16);
     }
 
     &__catalogs {
@@ -574,6 +350,7 @@ const banner = reactive([
         flex-direction: column;
         align-content: flex-start;
         grid-gap: 8px;
+        min-width: 216px;
 
         h3 {
             font-weight: 500;

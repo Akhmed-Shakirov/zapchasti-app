@@ -1,0 +1,243 @@
+{
+    "catalog": [
+        {
+            "name": "Спецтехника",
+            "icon": "specialEquipment",
+            "id": 1
+        },
+        {
+            "name": "Грузовая техника",
+            "icon": "trucks",
+            "id": 2
+        },
+        {
+            "name": "Сельхозтехника",
+            "icon": "agriculturalMachinery",
+            "id": 3
+        },
+        {
+            "name": "Автобусы",
+            "icon": "buses",
+            "id": 4
+        },
+        {
+            "name": "Электрокары",
+            "icon": "electricCars",
+            "id": 5
+        },
+        {
+            "name": "Электротовары",
+            "icon": "electricalGoods",
+            "id": 6
+        },
+        {
+            "name": "Запчасти",
+            "icon": "spareParts",
+            "id": 7
+        },
+        {
+            "name": "Все категории",
+            "icon": "allCategories",
+            "id": 8
+        }
+    ],
+    "types": [
+        {
+            "name": "Транспорт",
+            "id": 1
+        },
+        {
+            "name": "Запчасти",
+            "id": 2
+        }
+    ],
+    "brands": [
+        {
+            "name": "brands1",
+            "image": "",
+            "url": "google.com",
+            "catalog": 1
+        },
+        {
+            "name": "brands2",
+            "image": "",
+            "url": "google.com",
+            "catalog": 1
+        },
+        {
+            "name": "brands3",
+            "image": "",
+            "url": "google.com",
+            "catalog": 1
+        },
+        {
+            "name": "brands4",
+            "image": "",
+            "url": "google.com",
+            "catalog": 2
+        },
+        {
+            "name": "brands5",
+            "image": "",
+            "url": "google.com",
+            "catalog": 2
+        },
+        {
+            "name": "brands6",
+            "image": "",
+            "url": "google.com",
+            "catalog": 3
+        }
+    ],
+    "categories": [
+        {
+            "catalog": 1,
+            "types": 1,
+            "name": "Экскаваторы",
+            "id": 1
+        },
+        {
+            "catalog": 5,
+            "types": 1,
+            "name": "Кроссовер",
+            "id": 2
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "categories": 1,
+            "name": "XCMG Экскаватор",
+            "price": 25352000,
+            "code": "01234567",
+            "is_can_buy": false,
+            "corporate_offer": true,
+            "key": [
+                "В наличии",
+                "Новый"
+            ],
+            "imgages": [
+
+            ],
+            "salesman": {
+                "name": "XCMG Technology Co., Ltd.",
+                "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction подробнее...",
+                "image": "",
+                "license": true
+            },
+            "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction",
+            "specifications": [
+                {
+                    "name": "Эксплуатационная масса",
+                    "value": "5 900 кг"
+                },
+                {
+                    "name": "Емкость ковша",
+                    "value": "0.23 м3"
+                },
+                {
+                    "name": "Габариты (Д/Ш/В)",
+                    "value": "6230/1925/2850 мм"
+                },
+                {
+                    "name": "Номинальная мощность двигателя",
+                    "value": "42.5 кВт при 2400 об/мин"
+                },
+                {
+                    "name": "Сила копания на ковша",
+                    "value": "42.8 кН"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "categories": 2,
+            "name": "Changan UNI-T",
+            "price": 9992000,
+            "code": "02234567",
+            "is_can_buy": false,
+            "corporate_offer": false,
+            "key": [
+                "В наличии",
+                "Новый"
+            ],
+            "imgages": [
+
+            ],
+            "salesman": {
+                "name": "Changan auto",
+                "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction подробнее...",
+                "image": "",
+                "license": true
+            },
+            "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction",
+            "specifications": [
+                {
+                    "name": "Кузов",
+                    "value": "Кроссовер"
+                },
+                {
+                    "name": "Двигатель",
+                    "value": "5 900 кг"
+                },
+                {
+                    "name": "КПП",
+                    "value": "0.23 м3"
+                },
+                {
+                    "name": "Привод",
+                    "value": "Передний"
+                },
+                {
+                    "name": "Мощность",
+                    "value": "150 л.с."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "categories": false,
+            "name": "Super Socco TC MAX SPOKE WHEEL",
+            "price": 538000,
+            "code": "03234567",
+            "is_can_buy": true,
+            "corporate_offer": false,
+            "key": [
+                "В наличии",
+                "Новый"
+            ],
+            "imgages": [
+
+            ],
+            "salesman": {
+                "name": "Super Socco",
+                "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction подробнее...",
+                "image": "",
+                "license": true
+            },
+            "description": "is a company funded and established by the Jiacheng Group (established in 2001,with a registered capital of 410 million RMB, its business scope covering construction",
+            "specifications": [
+                {
+                    "name": "Двигатель",
+                    "value": "5100Вт"
+                },
+                {
+                    "name": "Номинальная мощность двигателя",
+                    "value": "6000Вт"
+                },
+                {
+                    "name": "Пиковая мощность",
+                    "value": "95 км/ч"
+                },
+                {
+                    "name": "Максимальная скорость",
+                    "value": "180 Н/м"
+                },
+                {
+                    "name": "Пиковый крутящий момент",
+                    "value": "Центральный мотор с ремнем"
+                }
+            ]
+        }
+    ]
+}

@@ -4,12 +4,13 @@
         <UiInput v-if="search" v-model="searchName" icon="search-mini" :placeholder="$t('find')" />
         <ul>
             <template v-if="filterItems.length">
-                <TransitionGroup name="list">
-                    <li v-for="item in filterItems" :key="item" @click="() => setValue(item.id)">
-                        <UiCheckbox :is-active="modelValue.includes(item.id)" />
-                        {{ item.name }} <span v-if="item.quantity">({{ item.quantity }})</span>
-                    </li>
-                </TransitionGroup>
+                <li v-for="item in filterItems" :key="item" @click="() => setValue(item.id)">
+                    <UiCheckbox :is-active="modelValue.includes(item.id)" />
+                    {{ item.name }} <span v-if="item.quantity">({{ item.quantity }})</span>
+                </li>
+                <button @click="isShow = !isShow">
+                    {{ isShow ? 'Скрыть' : `Показать все (${items.length})` }}
+                </button>
             </template>
             <li v-else>
                 {{ $t('notFound') }}
@@ -53,12 +54,12 @@ const setValue = (id) => {
 }
 
 const searchName = ref('')
+const isShow = ref('')
 
 const filterItems = computed(() => {
     const newItems = props.items
-
-    if (props.search && searchName.value) {
-        return newItems.filter(el => String(el.name).toLowerCase().includes(searchName.value.toLowerCase()))
+    if (!isShow.value) {
+        return newItems.filter((el, index) => index < 6)
     } else {
         return newItems
     }
@@ -83,9 +84,9 @@ const filterItems = computed(() => {
         display: flex;
         flex-direction: column;
         grid-gap: 16px;
-        height: 248px;
-        overflow-y: scroll;
-        overflow-x: hidden;
+        // height: 248px;
+        // overflow-y: scroll;
+        // overflow-x: hidden;
     }
 
     li {
@@ -106,6 +107,20 @@ const filterItems = computed(() => {
             &:hover {
                 opacity: .6;
             }
+        }
+    }
+
+    button {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: #1570EF;
+
+        &:hover {
+            color: #64a9f4;
         }
     }
 

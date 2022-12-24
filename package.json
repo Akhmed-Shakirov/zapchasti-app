@@ -5,7 +5,8 @@
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "postinstall": "nuxt prepare",
+        "json": "json-server --watch data.json"
     },
     "devDependencies": {
         "nuxt": "3.0.0-rc.11"
@@ -17,6 +18,7 @@
         "@pinia/nuxt": "^0.4.2",
         "@typescript-eslint/eslint-plugin": "^5.38.0",
         "@typescript-eslint/parser": "^5.38.0",
+        "@vueform/slider": "^2.1.5",
         "@vueuse/core": "^9.2.0",
         "@vueuse/nuxt": "^9.2.0",
         "eslint": "^8.23.1",

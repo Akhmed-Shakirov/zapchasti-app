@@ -103,17 +103,6 @@ const isScaley = ref(false)
         margin: 32px 0;
     }
 
-    .scaleY {
-        display: inline-block;
-        overflow: hidden;
-        height: 60px;
-        transition: .2s;
-
-        &-active {
-            height: auto;
-        }
-    }
-
     h4 {
         font-weight: 600;
         font-size: 12px;

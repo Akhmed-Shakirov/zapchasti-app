@@ -20,10 +20,10 @@
                     </template>
                 </div>
                 <h1 v-if="title">
-                    {{ $t(title) }} <span v-if="producting">15 682 {{ $t('producting') }}</span>
+                    {{ $t(title) }} <span v-if="producting">{{ producting }} {{ $t('producting') }}</span>
                 </h1>
-                <h4>
-                    <span v-if="code">{{ $t('productCode') }}: 01234567 <BaseIcon icon="copy" /></span>
+                <h4 v-if="code">
+                    <span>{{ $t('productCode') }}: 01234567 <BaseIcon icon="copy" /></span>
                 </h4>
             </div>
 
@@ -55,7 +55,7 @@ const props = defineProps({
         default: ''
     },
     producting: {
-        type: Number,
+        type: String,
         default: null
     },
     endMenu: {
@@ -110,8 +110,17 @@ const props = defineProps({
         margin-bottom: 8px;
         font-weight: 600;
         font-size: 24px;
-        line-height: 32px;
         color: #000000;
+        display: flex;
+        align-items: flex-end;
+        gap: 16px;
+
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #848484;
+        }
     }
 
     h4 {

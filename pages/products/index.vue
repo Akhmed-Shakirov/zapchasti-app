@@ -1,6 +1,6 @@
 <template>
     <NuxtLayout>
-        <HtmlTitle grid />
+        <HtmlTitle title="wqee wae wae" producting="12 000" />
         <BaseBlock>
             <main class="main">
                 <BaseGrid>
@@ -17,9 +17,9 @@
                 <BasePagination />
             </main>
             <aside class="sidebar">
-                <BaseFilter v-model="manufacturerBrand" title="manufacturerBrand" search :items="manufacturerBrandItems" />
+                <BaseFilter v-model="manufacturerBrand" title="manufacturerBrand" :items="manufacturerBrandItems" />
                 <BaseFilter v-model="yearIssue" title="yearIssue" :items="yearIssueItems" />
-                <BaseRange v-model="price" title="price" />
+                <BaseRange v-model="price" title="price" :min="priceMin" :max="priceMax" />
 
                 <UiButton value="showProducts" :count="135" />
             </aside>
@@ -29,8 +29,8 @@
 
 <script setup>
 const price = ref([1000, 2000])
-const priceFrom = ref(1000)
-const priceTo = ref(2000)
+const priceMin = ref(1000)
+const priceMax = ref(2000)
 
 const manufacturerBrand = ref([])
 const manufacturerBrandItems = reactive([
