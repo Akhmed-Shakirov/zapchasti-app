@@ -24,7 +24,7 @@ export const useCatalog = defineStore('Catalog', {
                         el.name !== 'Все категории' ? ct.types === this.types.find(tp => tp.name === 'Запчасти').id && ct.catalog === el.id : ct.types === this.types.find(tp => tp.name === 'Запчасти').id)
                 ],
                 brands: [...this.brands.filter(br => el.name !== 'Все категории' ? br.catalog === el.id : br.catalog)]
-            }))
+            })).slice(0, 8)
         },
         setCatalog (catalog, brands, types, categories) {
             this.catalog = catalog

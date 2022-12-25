@@ -2,12 +2,12 @@
     <div class="select">
         <div v-click-outside="() => close()" class="select__head" :class="{ 'select__head-active' : isShow }" @click="() => toggleShow()">
             <span v-if="icon"><BaseIcon :icon="icon" /></span>
-            {{ $t(modelValue) }}
+            {{ modelValue ? $t(options.find(el => el.id === modelValue)?.name) : 'Выберите вариант' }}
             <BaseIcon icon="chevron" />
         </div>
         <div ref="selectBody" class="select__body" :class="{ 'select__body-active' : isShow }" @click.stop>
-            <button v-for="option in options" :key="option" @click="() => ($emit('update:modelValue', option.value), toggleShow())">
-                {{ $t(option.name) }} <BaseIcon v-if="modelValue === option.value" icon="check-select" />
+            <button v-for="option in options" :key="option" @click="() => ($emit('update:modelValue', option.id), toggleShow())">
+                {{ $t(option.name) }} <BaseIcon v-if="modelValue === option.id" icon="check-select" />
             </button>
         </div>
     </div>
@@ -16,7 +16,7 @@
 <script setup>
 const props = defineProps({
     modelValue: {
-        type: String,
+        type: [String, Number, Boolean],
         default: ''
     },
     icon: {
@@ -30,7 +30,6 @@ const props = defineProps({
         }
     }
 })
-
 const isShow = ref(false)
 const selectBody = ref()
 

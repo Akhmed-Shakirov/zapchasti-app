@@ -25,6 +25,7 @@
                     </NuxtLink>
                     <NuxtLink
                         class="recommendation__link-all"
+                        :to="catalog.url"
                     >
                         <BaseIcon icon="arrow" />
                         <span>{{ $t(link) }}</span>

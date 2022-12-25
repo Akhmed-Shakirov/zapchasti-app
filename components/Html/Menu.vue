@@ -16,7 +16,7 @@
                     <div class="menu__select-body">
                         <div>
                             <p>Где вы находитесь?</p>
-                            <UiSelect v-model="select.city" />
+                            <UiSelect v-model="select.city" :options="citys" />
                         </div>
                     </div>
                 </div>
@@ -27,16 +27,14 @@
                     <div class="menu__select-body">
                         <div>
                             <p>Язык</p>
-                            <UiSelect v-model="select.lang" />
+                            <UiSelect v-model="select.lang" :options="langs" />
                         </div>
                         <div>
                             <p>Валюта</p>
-                            <UiSelect v-model="select.currency" />
+                            <UiSelect v-model="select.currency" :options="currencys" />
                         </div>
                     </div>
                 </div>
-                <!-- <UiSelect v-model="select.city" icon="geo" />| -->
-                <!-- <UiSelect v-model="select.lang" /> -->
             </div>
         </div>
     </div>
@@ -51,10 +49,29 @@ const links = reactive([
 ])
 
 const select = reactive({
-    city: 'almaty',
-    currency: 'kzt',
-    lang: 'ru'
+    city: 1,
+    currency: 1,
+    lang: 1
 })
+
+const citys = ref([
+    {
+        name: 'almaty',
+        id: 1
+    }
+])
+const langs = ref([
+    {
+        name: 'kzt',
+        id: 1
+    }
+])
+const currencys = ref([
+    {
+        name: 'ru',
+        id: 1
+    }
+])
 </script>
 
 <style scoped lang="scss">

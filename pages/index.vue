@@ -88,7 +88,6 @@
 const { isToolbar } = storeToRefs(useHelper())
 const { toggleToolbar, toggleWrapper } = useHelper()
 const { main } = storeToRefs(useCatalog())
-const { setCatalog } = useCatalog()
 
 const valueMenu = ref(0)
 
@@ -100,66 +99,31 @@ const toggleMenu = (value) => {
     }
 }
 
+// Done
 const bigCatalogs = reactive([
     {
         title: 'transport',
         text: 'Выбор более 100 производителей транспорта',
         links: [
-            { name: 'specialEquipment', url: '/products', img: '/images/card.png' },
-            { name: 'electricCars', url: '/products', img: '/images/card2.png' },
-            { name: 'buses', url: '/products', img: '/images/card3.png' },
-            { name: 'trucks', url: '/products', img: '/images/trucks.png' },
-            { name: 'agriculturalMachinery', url: '/products', img: '/images/agriculturalMachinery.png' },
-            { name: 'otherTransport', url: '/products', img: '/images/otherTransport.png' }
+            { name: 'specialEquipment', url: '/products?catalog=1&types=1', img: '/images/card.png' },
+            { name: 'electricCars', url: '/products?catalog=5&types=1', img: '/images/card2.png' },
+            { name: 'buses', url: '/products?catalog=4&types=1', img: '/images/card3.png' },
+            { name: 'trucks', url: '/products?catalog=2&types=1', img: '/images/trucks.png' },
+            { name: 'agriculturalMachinery?catalog=3&types=1', url: '/products', img: '/images/agriculturalMachinery.png' },
+            { name: 'otherTransport', url: '/products?catalog=9&types=1', img: '/images/otherTransport.png' }
         ]
     },
     {
         title: 'spareParts',
         text: 'Большой выбор разовидностей запчастей для всех типов транспорта и техники',
         links: [
-            { name: 'specialEquipment', url: '/products', img: '/images/spareParts1.png' },
-            { name: 'electricCars', url: '/products', img: '/images/spareParts2.png' },
-            { name: 'buses', url: '/products', img: '/images/card3.png' },
-            { name: 'trucks', url: '/products', img: '/images/trucks2.png' },
-            { name: 'agriculturalMachinery', url: '/products', img: '/images/agriculturalMachinery.png' },
-            { name: 'otherTransport', url: '/products', img: '/images/otherTransport2.png' }
+            { name: 'specialEquipment', url: '/products?catalog=9&types=2', img: '/images/spareParts1.png' },
+            { name: 'electricCars', url: '/products?catalog=9&types=2', img: '/images/spareParts2.png' },
+            { name: 'buses', url: '/products?catalog=9&types=2', img: '/images/card3.png' },
+            { name: 'trucks', url: '/products?catalog=9&types=2', img: '/images/trucks2.png' },
+            { name: 'agriculturalMachinery', url: '/products?catalog=9&types=2', img: '/images/agriculturalMachinery.png' },
+            { name: 'otherTransport', url: '/products?catalog=9&types=2', img: '/images/otherTransport2.png' }
         ]
-    }
-])
-
-const recommendations = reactive([
-    {
-        title: 'saleOfElectricCarsSpareParts',
-        color: 'blue',
-        catalog: {
-            img: 'card2.png',
-            name: 'largeSelectionOfElectricCars',
-            text: '',
-            url: '/products'
-        },
-        items: []
-    },
-    {
-        title: 'sparePartsForSpecialEquipment',
-        color: 'orange',
-        catalog: {
-            img: 'card.png',
-            name: 'spareParts',
-            text: 'fromChinaOriginalDuplicates',
-            url: '/products'
-        },
-        items: []
-    },
-    {
-        title: 'sparePartsForElectricBuses',
-        color: 'green',
-        catalog: {
-            img: 'card3.png',
-            name: 'spareParts',
-            text: 'fromChinaOriginalDuplicates',
-            url: '/products'
-        },
-        items: []
     }
 ])
 
@@ -171,7 +135,7 @@ const recommendationsCatalog = reactive([
             img: 'card2.png',
             name: 'largeSelectionOfElectricCars',
             text: '',
-            url: '/products'
+            url: '/products?catalog=5&types=1'
         },
         items: [
             {
@@ -229,7 +193,7 @@ const recommendationsCatalog = reactive([
             img: 'card.png',
             name: 'spareParts',
             text: '',
-            url: '/products'
+            url: '/products?catalog=1&types=1'
         },
         items: [
             {

@@ -39,6 +39,11 @@
             "name": "Все категории",
             "icon": "allCategories",
             "id": 8
+        },
+        {
+            "name": "Прочee",
+            "icon": "other",
+            "id": 9
         }
     ],
     "types": [
@@ -53,36 +58,42 @@
     ],
     "brands": [
         {
+            "id": 1,
             "name": "brands1",
             "image": "",
             "url": "google.com",
             "catalog": 1
         },
         {
+            "id": 2,
             "name": "brands2",
             "image": "",
             "url": "google.com",
             "catalog": 1
         },
         {
+            "id": 3,
             "name": "brands3",
             "image": "",
             "url": "google.com",
             "catalog": 1
         },
         {
+            "id": 4,
             "name": "brands4",
             "image": "",
             "url": "google.com",
             "catalog": 2
         },
         {
+            "id": 5,
             "name": "brands5",
             "image": "",
             "url": "google.com",
             "catalog": 2
         },
         {
+            "id": 6,
             "name": "brands6",
             "image": "",
             "url": "google.com",
@@ -101,6 +112,18 @@
             "types": 1,
             "name": "Кроссовер",
             "id": 2
+        },
+        {
+            "catalog": 9,
+            "types": 1,
+            "name": "Прочий транспорт",
+            "id": 2
+        },
+        {
+            "catalog": 9,
+            "types": 2,
+            "name": "Прочие запчасти",
+            "id": 2
         }
     ],
     "products": [
@@ -113,8 +136,12 @@
             "is_can_buy": false,
             "corporate_offer": true,
             "key": [
-                "В наличии",
-                "Новый"
+                {
+                    "name": "В наличии"
+                },
+                {
+                    "name": "Новый"
+                }
             ],
             "imgages": [
 
@@ -158,8 +185,12 @@
             "is_can_buy": false,
             "corporate_offer": false,
             "key": [
-                "В наличии",
-                "Новый"
+                {
+                    "name": "В наличии"
+                },
+                {
+                    "name": "Новый"
+                }
             ],
             "imgages": [
 
@@ -197,14 +228,19 @@
         {
             "id": 3,
             "categories": false,
+
             "name": "Super Socco TC MAX SPOKE WHEEL",
             "price": 538000,
             "code": "03234567",
             "is_can_buy": true,
             "corporate_offer": false,
             "key": [
-                "В наличии",
-                "Новый"
+                {
+                    "name": "В наличии"
+                },
+                {
+                    "name": "Новый"
+                }
             ],
             "imgages": [
 

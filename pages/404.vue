@@ -1,23 +1,13 @@
 <template>
     <NuxtLayout>
         <div class="page-404">
-            <h1 @click="response">
+            <h1>
                 404
             </h1>
             <p>{{ $t('pageNotFound') }}</p>
         </div>
     </NuxtLayout>
 </template>
-
-<script setup>
-const id = 9
-const response = () => {
-    // myFetch('catalog/' + id, 'DELETE').then((res) => {
-    //     console.log('Request complete! response:', res)
-    // })
-}
-
-</script>
 
 <style lang="scss">
 .page-404 {
