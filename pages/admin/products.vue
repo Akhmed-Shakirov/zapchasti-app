@@ -133,7 +133,6 @@ const addKey = () => {
     incKey.value++
 }
 const removeKey = (index) => {
-    console.log(index)
     data.value.key.splice(index, 1)
     incKey.value++
 }
