@@ -6,34 +6,45 @@
                     <NuxtLink to="/">
                         <BaseIcon icon="logo" />
                     </NuxtLink>
-                    <h3>International machinery parts trade</h3>
+                    <h3>International machinery & parts trade</h3>
                     <h4>
                         <span>{{ $t('footerText') }}</span>
                         <span>{{ $t('footertext2') }}</span>
                     </h4>
                 </div>
 
-                <div v-for="link in links" :key="link" class="footer__menu">
-                    <NuxtLink :to="link.value" class="footer__title">
-                        {{ $t(link.name) }}
-                    </NuxtLink>
-                    <NuxtLink v-for="item in link.child" :key="item" :to="item.value" class="footer__link">
-                        {{ $t(item.name) }}
-                    </NuxtLink>
+                <div class="footer__links">
+                    <div v-for="link in links" :key="link" class="footer__menu">
+                        <NuxtLink v-if="link.isShow" :to="link.value" class="footer__title">
+                            {{ $t(link.name) }}
+                        </NuxtLink>
+                        <NuxtLink v-for="item in link.child" :key="item" :to="item.value" class="footer__link">
+                            {{ $t(item.name) }}
+                        </NuxtLink>
+                    </div>
                 </div>
 
-                <div class="footer__helper">
+                <div />
+                <!-- <div class="footer__helper">
                     <h4 class="footer__title">
                         {{ $t('forQuestions') }}
                     </h4>
                     <a v-for="tel in tels" :key="tel" :href="`tel:+${tel.value}`">
                         {{ tel.name }}
                     </a>
-                </div>
+                </div> -->
             </div>
 
             <div class="footer__bottom">
                 {{ $t('footerBottom') }}
+                <p>
+                    <span>{{ $t('forQuestions') }}</span>
+                    <a v-for="tel in tels" :key="tel" :href="`tel:+${tel.value}`">
+                        {{ tel.name }}
+                    </a>
+                </p>
+
+                <p />
             </div>
         </div>
     </footer>
@@ -44,6 +55,7 @@ const links = reactive([
     {
         name: 'about',
         value: 'about',
+        isShow: false,
         child: [
             { name: 'contacts', value: '/contacts' },
             { name: 'termsUse', value: '/termsUse' },
@@ -53,6 +65,7 @@ const links = reactive([
     {
         name: 'clients',
         value: 'clients',
+        isShow: false,
         child: [
             { name: 'shippingPayment', value: '/shippingPayment' },
             { name: 'howOrder', value: '/howOrder' },
@@ -66,6 +79,7 @@ const links = reactive([
     {
         name: 'benefit',
         value: 'benefit',
+        isShow: false,
         child: [
             { name: 'stock', value: '/stock' },
             { name: 'new', value: '/new' },
@@ -82,9 +96,9 @@ const tels = reactive([
 
 <style scoped lang="scss">
 .footer {
-    background: #1D2939;
+    background: #F1F1F1;
     padding: 32px 0 16px;
-    color: #FFFFFF;
+    color: #101828;
 
     &__top {
         padding-bottom: 24px;
@@ -94,10 +108,16 @@ const tels = reactive([
         grid-gap: 60px;
     }
 
+    &__links {
+        display: flex;
+        align-items: flex-start;
+        gap: 100px;
+    }
+
     &__info {
         a {
             height: 39px;
-            color: #FFFFFF;
+            color: #101828;
             border-bottom: 4px solid #FEC80B;
 
             .icon {
@@ -129,10 +149,11 @@ const tels = reactive([
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 18px;
+                max-width: 150px;
             }
 
             span:last-child {
-                color: #FEC80B;
+                color: #667085;
             }
         }
     }
@@ -141,9 +162,36 @@ const tels = reactive([
         font-weight: 500;
         font-size: 12px;
         line-height: 18px;
-        color: #FFFFFF;
+        color: #667085;
         padding-top: 16px;
-        border-top: 1px solid #667085;
+        border-top: 1px solid #E4E7EC;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            span {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            a {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #667085;
+
+                &:hover {
+                    color: #FFDA33;
+                }
+            }
+        }
     }
 
     &__title {
@@ -155,10 +203,11 @@ const tels = reactive([
     }
 
     &__link {
-        font-weight: 500;
-        font-size: 14px;
+        max-width: 150px;
+        font-weight: 400;
+        font-size: 12px;
         line-height: 20px;
-        color: #dfdfdf;
+        color: #667085;
     }
 
     &__menu {

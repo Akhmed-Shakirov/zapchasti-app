@@ -48,8 +48,8 @@
                             <span>Код товара: 01234567 <BaseIcon icon="copy" /></span>
 
                             <!-- <UiButton value="Получить корпоративное предложение" gray iconR="download" /> -->
-                            <!-- <UiButton value="Оставить заявку" /> -->
-                            <UiButton value="addBasket" />
+                            <UiButton value="Оставить заявку" />
+                            <!-- <UiButton value="addBasket" /> -->
 
                             <div class="product__info">
                                 <baseIcon icon="circle-information" />

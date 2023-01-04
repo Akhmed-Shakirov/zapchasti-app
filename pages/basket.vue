@@ -86,16 +86,22 @@ const recommendation = reactive({
 })
 
 const baskets = reactive([
-    { isCheck: false, name: 'Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8', brands: 'SHACHUNG', price: '1 640 567 ₸', amount: 1 }
+    {
+        isCheck: false,
+        name: 'Бортовой автомобиль со шторным механизмом открытия тента HYUNDAI Myghty EX 8',
+        brands: 'SHACHUNG',
+        price: '1 640 567 ₸',
+        amount: 1
+    }
 ])
 
 const amountOptions = reactive([
-    { name: '1', value: 1 },
-    { name: '2', value: 2 },
-    { name: '3', value: 3 },
-    { name: '4', value: 4 },
-    { name: '5', value: 5 },
-    { name: '5+', value: '5+' }
+    { name: '1', id: 1 },
+    { name: '2', id: 2 },
+    { name: '3', id: 3 },
+    { name: '4', id: 4 },
+    { name: '5', id: 5 },
+    { name: '5+', id: 6 }
 ])
 </script>
 
